@@ -1,0 +1,198 @@
+<button id="jh-create-entity" class="btn mybtn float-right jh-create-entity create-experience" (click)="showSidebar()">
+  <svg width="22px" height="22px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>play-button</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="My-job-description" transform="translate(-1617.000000, -40.000000)" fill="#FFFFFF" fill-rule="nonzero">
+        <g id="New-matching-button" transform="translate(1591.000000, 28.000000)">
+          <g id="play-button" transform="translate(26.000000, 12.000000)">
+            <polygon id="Path" points="11 20 19 13.5 11 7"></polygon>
+            <path
+              d="M13.9999672,0 C6.26501698,0 0,6.26503166 0,14 C0,21.7349683 6.26501698,28 13.9999672,28 C21.7349174,28 28,21.735034 28,14 C28,6.26496604 21.734983,0 13.9999672,0 Z M13.9999672,25.2000394 C7.82597201,25.2000394 2.79995406,20.1740096 2.79995406,14 C2.79995406,7.82599035 7.82597201,2.80002625 13.9999672,2.80002625 C20.1739624,2.80002625 25.1999803,7.82599035 25.1999803,14 C25.1999803,20.1740096 20.1739624,25.2000394 13.9999672,25.2000394 Z"
+              id="Shape"></path>
+          </g>
+        </g>
+      </g>
+    </g>
+  </svg>
+  <span jhiTranslate="start.new.matching">
+    Start new matching
+  </span>
+</button>
+<p-toast position="top-center"></p-toast>
+<p-blockUI [blocked]="blocked">
+  <!--   <img class="rounded mx-auto d-block" src="../../content/images/OG_TRANSPARENT.png">
+ -->
+  <iframe class="rounded mx-auto d-block" allowtransparency="true" src="content/loading-emoby.html"
+    style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
+  </iframe>
+</p-blockUI>
+
+
+<p-sidebar [(visible)]="visibleSidebar" (onHide)="onShowSidebar()" position="right" [style]='{"width":"450px"}'>
+  <h3 jhiTranslate="dashboard.upload.title">New matching session</h3>
+  <p-tabView [activeIndex]="index" (onChange)="handleChange()">
+    <p-tabPanel header="UPLOAD" [style]='{"backgroundColor":"#8CA2DB"}'>
+      <form name="editForm" role="form" novalidate (ngSubmit)="showSidebar()" [formGroup]="editForm1">
+        <h5 jhiTranslate="dashboard.upload.upload"></h5>
+        <div>
+          <div class="form-group">
+            <label class="form-control-label" jhiTranslate="emobyMphApp.jobdescription.name"
+              for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name" formControlName="name" />
+          </div>
+
+          <div align="center">
+            <div class="form-group">
+              <div style="margin-top: 20px; margin-bottom: 40px;" align="center">
+                <input #file type="file" id="file_data" (change)="setFileData($event, 'data', false);" />
+              </div>
+              <input type="hidden" class="form-control" name="data" id="field_data" formControlName="data" />
+              <input type="hidden" class="form-control" name="dataContentType" id="field_dataContentType"
+                formControlName="dataContentType" />
+            </div>
+          </div>
+
+          <div align="right">
+            <button jhiTranslate="dashboard.upload.next" [disabled]="editForm1.invalid || isSaving"
+              class="btn btn-primary" (click)="save1()">Next</button>
+          </div>
+        </div>
+      </form>
+    </p-tabPanel>
+
+    <p-tabPanel header="FILTERS" style="height: 100%;" [disabled]="index == 0 ? true:false">
+      <h5 jhiTranslate="dashboard.filters.title">Refine your need with some filters</h5>
+      <ul class="list-group  mt-4">
+        <!-- Gender -->
+        <!--<div class="row">
+          <div class="col-form-label col-sm-4">
+            <label jhiTranslate="dashboard.filters.gender">Gender</label>
+          </div>
+          <div class="col-sm-8 my-auto">
+            <p-dropdown [options]="genders" [(ngModel)]="selectedGender" optionLabel="libelle" [filter]="false"
+              [showClear]="true" placeholder="Choose a gender" [style]='{"width":"100%"}'>
+            </p-dropdown>
+          </div>
+        </div>-->
+        <!-- Nationality -->
+        <div class="row">
+          <div class="col-form-label col-sm-4">
+            <label jhiTranslate="dashboard.filters.nationality">Nationality</label>
+          </div>
+          <div class="col-sm-8 my-auto">
+            <p-multiSelect [options]="countries" [(ngModel)]="selectedNationality" placeholder="Select a nationality"
+              optionLabel="libelle" [showToggleAll]="false" [filter]="true" [style]='{"width":"100%"}'>
+            </p-multiSelect>
+          </div>
+        </div>
+        <!-- Location -->
+        <div class="row">
+          <div class="col-form-label col-sm-4">
+            <label jhiTranslate="dashboard.filters.location">Location</label>
+          </div>
+          <div class="col-sm-8 my-auto">
+
+            <p-multiSelect [options]="countries" [(ngModel)]="selectedLocation" placeholder="Choose a location"
+              optionLabel="libelle" [showToggleAll]="false" [filter]="true" [style]='{"width":"100%"}'>
+            </p-multiSelect>
+          </div>
+        </div>
+        <!-- Project Phase & activity -->
+        <div class="row">
+          <div class="col-form-label col-sm-4">
+            <label jhiTranslate="dashboard.filters.projectPhase">Project phase</label>
+          </div>
+          <div class="col-sm-8 my-auto">
+            <p-multiSelect [options]="projectPhases" (onChange)="updateActivities()" [(ngModel)]="selectedProjectPhase"
+              placeholder="Select a project phase" optionLabel="libelle" [showToggleAll]="false" [filter]="true"
+              [style]='{"width":"100%"}'>
+            </p-multiSelect>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-form-label col-sm-4 my-auto">
+            <label jhiTranslate="dashboard.filters.activities">Activities</label>
+          </div>
+          <div class="col-sm-8 my-auto">
+            <p-multiSelect [options]="activities" [(ngModel)]="selectedProjectphaseActivity"
+              placeholder="Select activities" optionLabel="activityLibelle" [showToggleAll]="false" [filter]="true"
+              [style]='{"width":"100%"}'>
+            </p-multiSelect>
+          </div>
+        </div>
+        <!-- Higher Education Level -->
+        <div class="row">
+          <div class="col-form-label col-sm-4">
+            <label jhiTranslate="dashboard.filters.higherEducationLevel">Higher Education Level</label>
+          </div>
+          <div class="col-sm-8 my-auto my-auto">
+            <p-multiSelect [options]="educationLevels" [(ngModel)]="selectedEducationLevel" placeholder="Choose a level"
+              optionLabel="libelle" [showToggleAll]="false" [filter]="true" [style]='{"width":"100%"}'>
+            </p-multiSelect>
+          </div>
+        </div>
+        <!-- Experience -->
+        <div class="row">
+          <div class="col-form-label col-sm-4">
+            <label jhiTranslate="dashboard.filters.experience">Experience</label>
+          </div>
+          <div class="col-sm-8 my-auto">
+            <p-multiSelect [options]="experiences" [(ngModel)]="selectedExperience" placeholder="Select range"
+              optionLabel="libelle" [showToggleAll]="false" [filter]="true" [style]='{"width":"100%"}'>
+            </p-multiSelect>
+          </div>
+        </div>
+
+        <!-- Language -->
+        <!--<div class="row">
+          <div class="col-form-label col-sm-4">
+            <label jhiTranslate="dashboard.filters.language">Language</label>
+          </div>
+          <div class="col-sm-8 my-auto">
+
+            <p-multiSelect [options]="languages" [(ngModel)]="selectedLanguage"
+              placeholder="Choose one of more languages" optionLabel="libelle" [showToggleAll]="false" [filter]="true"
+              [style]='{"width":"100%"}'>
+            </p-multiSelect>
+          </div>
+        </div>-->
+        <!-- Technical Discipline -->
+        <!--<div class="row">
+          <div class="col-form-label col-sm-4">
+            <label jhiTranslate="dashboard.filters.technicalDiscipline">Technical Discipline</label>
+          </div>
+          <div class="col-sm-8 my-auto">
+            <p-multiSelect [options]="technicalDisciplines" [(ngModel)]=" selectedTechnicalDiscipline"
+              placeholder="Select technical disciplines" optionLabel="libelle" [showToggleAll]="false" [filter]="true"
+              [style]='{"width":"100%"}'>
+            </p-multiSelect>
+          </div>
+        </div>-->
+        <!-- Sector -->
+        <div class="row">
+          <div class="col-form-label col-sm-4">
+            <label jhiTranslate="dashboard.filters.sector">Sector</label>
+
+          </div>
+          <div class="col-sm-8 my-auto">
+            <!-- <p-multiSelect [options]="sectors" (onChange)="updateSubSector()" [(ngModel)]="selectedSector"
+              placeholder="Select a sector" optionLabel="libelle" [style]='{"width":"100%"}'>
+            </p-multiSelect> -->
+
+            <div class="mt-2">
+              <div class="d-inline" *ngFor="let sector of sectors;">
+                <p-checkbox class="mb-1" [disabled]="sector.disabled" name="sectors" [value]="sector"
+                  [label]="sector.libelle" [(ngModel)]="selectedSector"></p-checkbox>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ul>
+      <div align="right" style="margin-top: 20px;">
+        <button class="btn btn-primary" (click)="save2()" jhiTranslate="dashboard.filters.matching">Matching</button>
+      </div>
+    </p-tabPanel>
+  </p-tabView>
+</p-sidebar>

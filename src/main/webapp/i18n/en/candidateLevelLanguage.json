@@ -1,0 +1,23 @@
+{
+  "emobyMphApp": {
+    "candidateLevelLanguage": {
+      "home": {
+        "title": "Candidate Level Languages",
+        "createLabel": "Create a new Candidate Level Language",
+        "createOrEditLabel": "Create or edit a Candidate Level Language",
+        "notFound": "No Candidate Level Languages found"
+      },
+      "created": "A new Candidate Level Language is created with identifier {{ param }}",
+      "updated": "A Candidate Level Language is updated with identifier {{ param }}",
+      "deleted": "A Candidate Level Language is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Candidate Level Language {{ id }}?"
+      },
+      "detail": {
+        "title": "Candidate Level Language"
+      },
+      "levelLanguage": "Level Language",
+      "language": "Language"
+    }
+  }
+}

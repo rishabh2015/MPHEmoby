@@ -1,0 +1,69 @@
+id;code;libelle
+1;101;Project Management
+2;102;Contract
+3;103;Planning
+4;1001;Logistic
+5;104;Documentation
+6;105;HR
+7;106;Accounting
+8;107;Training
+9;108;Company Site Representative
+10;109;Risk Management
+11;110;Finance
+12;111;Quality
+13;201;Business Development
+14;202;Marketing
+15;203;Data Analyst
+16;204;Services Sales
+17;205;Customer Service
+18;206;Bidding
+19;207;Proposal
+20;301;Permiting
+21;302;Feasibility
+22;303;Licensing
+23;304;Drilling
+24;1004;R&D
+25;401;Designer
+26;402;Drafter
+27;403;Configuration
+28;404;System Integration
+29;405;Process
+30;501;Specificator
+31;502;Estimator
+32;503;Sourcer
+33;504;Expeditor
+34;505;Quality Inspector
+35;506;Material Coordinator
+36;507;Logistic & Transport
+37;508;Buyer
+38;509;Supply Chain
+39;1002;Warehousing
+40;601;Erection / Construction
+41;602;Site Management
+42;1003;QA/QC
+43;603;Testing & Commissioning
+44;604;HSE
+45;605;Interface Management
+46;606;Punch List
+47;607;Completion Manager
+48;608;Fabrication
+49;609;Quantity Surveyor
+50;610;Permit to Work
+51;611;Equipment Installation
+52;701;O&M
+53;702;Discipline Engineer
+54;703;Safety
+55;704;RAMS
+56;705;Maintenance
+57;706;Modification
+58;707;Performances
+59;708;Shutdown
+60;709;Operation
+61;710;Repair
+62;1005;Decommissionig
+63;1006;Radioactive Protection
+64;1007;Field Engineers / Technicians
+65;1008;Radioactive Waste Retrieval and Management
+66;1009;Regulatory / Licensing / Legal
+67;1010;Environmental
+68;1011;Laboratory / Chemical

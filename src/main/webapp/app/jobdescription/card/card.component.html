@@ -1,0 +1,298 @@
+<p-toast position="top-center"></p-toast>
+<div class="row" *ngIf="no_result !== ''">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <p-message [style]="{'width':'100%', 'marginTop':'5em', 'textAlign':'center'}" severity="info"
+            text="{{no_result}}" styleClass="p-mr-2"></p-message>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3"
+        *ngFor="let result of matchingResults | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems, id: mode }"
+        closable>
+        <p-card
+            [style]="{'width': '100%', 'height':'19.5rem','margin-top':'1em', 'border':'3px solid #6c8cde','border-radius':'15px'}">
+            <div class="row">
+                <div class="col">
+                    <i class="pi " style="font-size: 2rem; color:#6c8cde;"
+                        (click)="setShortListed(result.candidate?.id, result.candidate?.shortlistedId, result.candidate?.placedId)"
+                        [ngClass]="(result.candidate?.shortlistedId === null ||  result.candidate?.shortlistedId === 0 )? 'pi-star-o' : 'pi-star'"
+                        [ngStyle]="{'cursor':  (((mode!=='shortlisted' && mode!=='placed') && (result.candidate?.shortlistedId === null ||  result.candidate?.shortlistedId === 0)) || ((mode!=='potentialcandidate' && mode!=='placed') && (result.candidate?.placedId === null ||  result.candidate?.placedId === 0)) && (mode!=='placed')) ? 'pointer' : 'not-allowed' }"></i>
+                </div>
+                <div class="col" style="text-align:right;">
+                    <i [hidden]="(mode==='potentialcandidate' ? true:false)" style="font-size: 2rem"
+                        (click)="setPlaced(result.candidate?.id, result.candidate?.placedId)"
+                        [ngClass]="(result.candidate?.placedId === null ||  result.candidate?.placedId === 0 )? 'etoileEmoby' : 'etoileEmobyGreen'"></i>
+                </div>
+            </div>
+            <div class="row" closable>
+                <div class="col-12" style="text-align: center; cursor:auto;"
+                    (click)="showBasicDialog(result.candidate?.id, result.matching_percent)">
+                    <div class="scoreContainer">
+                        <div>
+                            <h4 class="score">{{result.matching_percent}}%</h4>
+                        </div>
+                    </div>
+                    <h6>{{result.candidate?.first_name}} {{result.candidate?.last_name}}</h6>
+                    <div style="color: #6c8cde;">{{result.candidate?.location?.libelle}}</div>
+                    <div style="color: #6c8cde;">{{result.candidate?.experience?.libelle}}</div>
+                    <div style="color: #6c8cde;">See more</div>
+                    <svg width="32px" height="6px" viewBox="0 0 32 6" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <title>more</title>
+                        <desc>Created with Sketch.</desc>
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="Match-profil---results" transform="translate(-497.000000, -490.000000)"
+                                fill="#8CA2DB" fill-rule="nonzero">
+                                <g id="Group-3" transform="translate(487.000000, 473.000000)">
+                                    <g id="more"
+                                        transform="translate(26.000000, 20.000000) scale(1, -1) translate(-26.000000, -20.000000) translate(10.000000, 17.000000)">
+                                        <circle id="Oval" cx="3" cy="3" r="3"></circle>
+                                        <circle id="Oval" cx="16" cy="3" r="3"></circle>
+                                        <circle id="Oval" cx="29" cy="3" r="3"></circle>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </p-card>
+    </div>
+    <p-dialog [(visible)]="displayBasic" header=" " closeIcon="pi pi-times"
+        [style]="{'width': '1200px', 'height':'800px', 'backgroundColor':'#ffffff','border':'3px solid #6c8cde','border-radius':'8px'}"
+        (onHide)="setCandidateComment(candidate?.id, commentaire)">
+        <div class="row">
+            <div class="col-4" style="text-align: center;">
+                <div (click)="closeDialog()">
+                    <h6 class="scoreOne"></h6>
+                    <div class="scoreContainerOne">
+                        <h4>{{percentMatching}}%</h4>
+                    </div>
+                    <h5>{{candidate?.first_name}} {{candidate?.last_name}}</h5>
+                    <div>
+                        <h6>{{candidate?.location?.libelle}}</h6>
+                    </div>
+                    <div>
+                        <h6>{{candidate?.experience?.libelle}}</h6>
+                    </div>
+                </div>
+                <textarea [style]="{'marginTop':'6em', 'color':' #6c8cde', 'borderColor':'#6c8cde'}" rows="5" cols="50"
+                    pInputTextarea [(ngModel)]="commentaire" name="fieldName" ngDefaultControl>Comment
+                     </textarea>
+                <br><br><br>
+                <div (click)="getCvByIdDocument(candidate?.id)">
+                    <img src="../../../content/images/curriculum-vitae.png">
+                    <div class="opencv">Open original CV</div>
+                </div>
+
+            </div>
+            <div class="col-8" (click)="closeDialog()">
+                <h5 jhiTranslate="emobyMphApp.jobdescription-detail.popup.generalInfos.generalInformations">
+                    GENREL INFORMATIONS
+                </h5>
+                <hr>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-5">
+                                <h6 jhiTranslate="emobyMphApp.jobdescription-detail.popup.generalInfos.firstName">
+                                    First Name : </h6>
+                            </div>
+                            <div class="col-7">
+                                <p>{{candidate?.first_name}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <h6 jhiTranslate="emobyMphApp.jobdescription-detail.popup.generalInfos.gender">
+                                    Gender : </h6>
+                            </div>
+                            <div class="col-7">
+                                <p>{{candidate?.gender}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <h6 jhiTranslate="emobyMphApp.jobdescription-detail.popup.generalInfos.email">
+                                    E-mail :
+                                </h6>
+                            </div>
+                            <div class="col-7">
+                                <p>{{candidate?.email}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <h6 jhiTranslate="emobyMphApp.jobdescription-detail.popup.generalInfos.nationality">
+                                    Nationality : </h6>
+                            </div>
+                            <div class="col-7">
+                                <p>{{candidate?.nationality?.libelle}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <h6 jhiTranslate="emobyMphApp.jobdescription-detail.popup.generalInfos.currentLocation">
+                                    Current Location : </h6>
+                            </div>
+                            <div class="col-7">
+                                <p>{{candidate?.location?.libelle}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-5">
+                                <h6 jhiTranslate="emobyMphApp.jobdescription-detail.popup.generalInfos.lastName">
+                                    Last Name : </h6>
+                            </div>
+                            <div class="col-7">
+                                <p>{{candidate?.last_name}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <h6 jhiTranslate="emobyMphApp.jobdescription-detail.popup.generalInfos.dateOfBirth">
+                                    Date of birth : </h6>
+                            </div>
+                            <div class="col">
+                                <p>{{candidate?.date_of_birth | date}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                            </div>
+                            <div class="col-7">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <h6 jhiTranslate="emobyMphApp.jobdescription-detail.popup.generalInfos.dualNationality">
+                                    Dual Nationality : </h6>
+                            </div>
+                            <div class="col-7">
+                                <p>
+                                    <li *ngFor="let nationality of candidate?.dualNationalities">
+                                        {{nationality?.libelle}}</li>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h5 jhiTranslate="emobyMphApp.jobdescription-detail.popup.skillsInfos.skillsInformations">
+                    SKILLS INFORMATIONS
+                </h5>
+                <hr>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-5">
+                                <h6
+                                    jhiTranslate="emobyMphApp.jobdescription-detail.popup.skillsInfos.higherEducationLevel">
+                                    Higher Education level :</h6>
+                            </div>
+                            <div class="col-7">
+                                <p>{{candidate?.educationlevel?.libelle}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <h6 jhiTranslate="emobyMphApp.jobdescription-detail.popup.skillsInfos.experience">
+                                    Experience :
+                                </h6>
+                            </div>
+                            <div class="col-7">
+                                <p>{{candidate?.experience?.libelle}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <h6 jhiTranslate="emobyMphApp.jobdescription-detail.popup.skillsInfos.activities">
+                                    Activities :
+                                </h6>
+                            </div>
+                            <div class="col-7">
+                                <p>
+                                    <li *ngFor="let activity of candidate?.projectphaseActivities">
+                                        {{activity?.activityLibelle}}</li>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <h6 jhiTranslate="emobyMphApp.jobdescription-detail.popup.skillsInfos.sector">
+                                    Sector :
+                                </h6>
+                            </div>
+                            <div class="col-7">
+                                <p>
+                                    <li *ngFor="let sector of candidate?.sectorSubsectors">
+                                        {{sector?.sectorLibelle}}</li>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-5">
+                                <h6 jhiTranslate="emobyMphApp.jobdescription-detail.popup.skillsInfos.projectPhase">
+                                    Project phase :
+                                </h6>
+                            </div>
+                            <div class="col-7">
+                                <p>
+                                    <li *ngFor="let activity of candidate?.projectphaseActivities">
+                                        {{activity?.projectphaseLibelle}}</li>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <h6
+                                    jhiTranslate="emobyMphApp.jobdescription-detail.popup.skillsInfos.technicalDiscipline">
+                                    Technical disciplines :
+                                </h6>
+                            </div>
+                            <div class="col-7">
+                                <p>
+                                    <li *ngFor="let technicalDiscipline of candidate?.technicalDisciplines">
+                                        {{technicalDiscipline?.libelle}}</li>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <h6 jhiTranslate="emobyMphApp.jobdescription-detail.popup.skillsInfos.subSector">
+                                    Sub sector :
+                                </h6>
+                            </div>
+                            <div class="col-7">
+                                <p>
+                                    <li *ngFor="let sector of candidate?.sectorSubsectors">
+                                        {{sector?.subsectorLibelle}}</li>
+                                </p>
+                            </div>
+                        </div>
+                        <!--<div class="row">
+                            <div class="col-5">
+                                <h6 jhiTranslate="emobyMphApp.jobdescription-detail.popup.skillsInfos.language">
+                                    Language :
+                                </h6>
+                            </div>
+                            <div class="col-7">
+                                <p>
+                                    <li *ngFor="let lang of candidate?.levelLanguages">
+                                        {{lang?.language?.libelle}} {{lang?.levelLanguage?.libelle}}</li>
+                                </p>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p-dialog>
+</div>
+<div class="paginator" *ngIf="matchingResults.length > 0">
+    <pagination-controls (pageChange)="page = $event; loadPage(page);" id="{{mode}}"></pagination-controls>
+</div>

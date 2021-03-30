@@ -1,0 +1,160 @@
+{
+  "fluentMethods": true,
+  "clientRootFolder": "",
+  "relationships": [
+    {
+      "relationshipName": "nationality",
+      "otherEntityName": "country",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"],
+      "otherEntityField": "id",
+      "otherEntityRelationshipName": "candidate"
+    },
+    {
+      "relationshipName": "dualNationality",
+      "otherEntityName": "country",
+      "relationshipType": "many-to-many",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "candidate"
+    },
+    {
+      "relationshipName": "location",
+      "otherEntityName": "country",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"],
+      "otherEntityField": "id",
+      "otherEntityRelationshipName": "candidate"
+    },
+    {
+      "relationshipName": "educationlevel",
+      "otherEntityName": "educationlevel",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"],
+      "otherEntityField": "id",
+      "otherEntityRelationshipName": "candidate"
+    },
+    {
+      "relationshipName": "experience",
+      "otherEntityName": "experience",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"],
+      "otherEntityField": "id",
+      "otherEntityRelationshipName": "candidate"
+    },
+    {
+      "relationshipName": "mobyStatus",
+      "otherEntityName": "mobyStatus",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id",
+      "otherEntityRelationshipName": "candidate"
+    },
+    {
+      "relationshipName": "sectorSubsector",
+      "otherEntityName": "sectorSubsector",
+      "relationshipType": "many-to-many",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "candidate"
+    },
+    {
+      "relationshipName": "projectphaseActivity",
+      "otherEntityName": "projectphaseActivity",
+      "relationshipType": "many-to-many",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "candidate"
+    },
+    {
+      "relationshipName": "technicalDiscipline",
+      "otherEntityName": "technicalDiscipline",
+      "relationshipType": "many-to-many",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "candidate"
+    },
+    {
+      "relationshipName": "shortlisted",
+      "otherEntityName": "jobdescription",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id",
+      "otherEntityRelationshipName": "candidate"
+    },
+    {
+      "relationshipName": "placed",
+      "otherEntityName": "jobdescription",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id",
+      "otherEntityRelationshipName": "candidate"
+    },
+    {
+      "relationshipName": "levelLanguage",
+      "otherEntityName": "candidateLevelLanguage",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "candidate"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "gender",
+      "fieldType": "Gender",
+      "fieldValues": "F,M",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "last_name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "first_name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "date_of_birth",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "text_clean",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "guid",
+      "fieldType": "UUID",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "creation_date",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "update_date",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "comment",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phone_number",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20201022073205",
+  "dto": "mapstruct",
+  "searchEngine": false,
+  "service": "serviceClass",
+  "entityTableName": "candidate",
+  "databaseType": "sql",
+  "readOnly": false,
+  "jpaMetamodelFiltering": false,
+  "pagination": "pagination"
+}

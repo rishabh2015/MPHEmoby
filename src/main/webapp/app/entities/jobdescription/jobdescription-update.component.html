@@ -1,0 +1,181 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-jobdescription-heading" jhiTranslate="emobyMphApp.jobdescription.home.createOrEditLabel">Create or edit a Jobdescription</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="emobyMphApp.jobdescription.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                    <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="emobyMphApp.jobdescription.creation_dt" for="field_creation_dt">Creation Dt</label>
+                    <div class="d-flex">
+                        <input id="field_creation_dt" type="datetime-local" class="form-control" name="creation_dt" formControlName="creation_dt" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('creation_dt')!.invalid && (editForm.get('creation_dt')!.dirty || editForm.get('creation_dt')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('creation_dt')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('creation_dt')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="emobyMphApp.jobdescription.gender" for="field_gender">Gender</label>
+                    <select class="form-control" name="gender" formControlName="gender" id="field_gender">
+                        <option value="M">{{ 'emobyMphApp.Gender.M' | translate }}</option>
+                        <option value="F">{{ 'emobyMphApp.Gender.F' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="emobyMphApp.jobdescription.project" for="field_project">Project</label>
+                    <select class="form-control" id="field_project" name="project" formControlName="projectId">
+                        <option *ngIf="!editForm.get('projectId')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="projectOption.id" *ngFor="let projectOption of projects; trackBy: trackById">{{ projectOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('projectId')!.invalid && (editForm.get('projectId')!.dirty || editForm.get('projectId')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('projectId')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="emobyMphApp.jobdescription.nationalities" for="field_nationalities">Nationalities</label>
+                    <select class="form-control" id="field_nationalities" multiple name="nationalities" formControlName="nationalities">
+                        <option [ngValue]="getSelected(editForm.get('nationalities')!.value, countryOption)" *ngFor="let countryOption of countries; trackBy: trackById">{{ countryOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="emobyMphApp.jobdescription.locations" for="field_locations">Locations</label>
+                    <select class="form-control" id="field_locations" multiple name="locations" formControlName="locations">
+                        <option [ngValue]="getSelected(editForm.get('locations')!.value, countryOption)" *ngFor="let countryOption of countries; trackBy: trackById">{{ countryOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="emobyMphApp.jobdescription.educationlevel" for="field_educationlevels">Educationlevel</label>
+                    <select class="form-control" id="field_educationlevels" multiple name="educationlevels" formControlName="educationlevels">
+                        <option [ngValue]="getSelected(editForm.get('educationlevels')!.value, educationlevelOption)" *ngFor="let educationlevelOption of educationlevels; trackBy: trackById">{{ educationlevelOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="emobyMphApp.jobdescription.projectphaseActivity" for="field_projectphaseActivities">Projectphase Activity</label>
+                    <select class="form-control" id="field_projectphaseActivities" multiple name="projectphaseActivities" formControlName="projectphaseActivities">
+                        <option [ngValue]="getSelected(editForm.get('projectphaseActivities')!.value, projectphaseActivityOption)" *ngFor="let projectphaseActivityOption of projectphaseactivities; trackBy: trackById">{{ projectphaseActivityOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="emobyMphApp.jobdescription.technicalDiscipline" for="field_technicalDisciplines">Technical Discipline</label>
+                    <select class="form-control" id="field_technicalDisciplines" multiple name="technicalDisciplines" formControlName="technicalDisciplines">
+                        <option [ngValue]="getSelected(editForm.get('technicalDisciplines')!.value, technicalDisciplineOption)" *ngFor="let technicalDisciplineOption of technicaldisciplines; trackBy: trackById">{{ technicalDisciplineOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="emobyMphApp.jobdescription.experience" for="field_experiences">Experience</label>
+                    <select class="form-control" id="field_experiences" multiple name="experiences" formControlName="experiences">
+                        <option [ngValue]="getSelected(editForm.get('experiences')!.value, experienceOption)" *ngFor="let experienceOption of experiences; trackBy: trackById">{{ experienceOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="emobyMphApp.jobdescription.language" for="field_languages">Language</label>
+                    <select class="form-control" id="field_languages" multiple name="languages" formControlName="languages">
+                        <option [ngValue]="getSelected(editForm.get('languages')!.value, languageOption)" *ngFor="let languageOption of languages; trackBy: trackById">{{ languageOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="emobyMphApp.jobdescription.sector" for="field_sectors">Sector</label>
+                    <select class="form-control" id="field_sectors" multiple name="sectors" formControlName="sectors">
+                        <option [ngValue]="getSelected(editForm.get('sectors')!.value, sectorOption)" *ngFor="let sectorOption of sectors; trackBy: trackById">{{ sectorOption.id }}</option>
+                    </select>
+                </div>
+
+                <div *ngIf="editForm.get('contentId')!.invalid && (editForm.get('contentId')!.dirty || editForm.get('contentId')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('contentId')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group" [hidden]="!editForm.get('contentId')!.value">
+                    <label for="id" jhiTranslate="emobyMphApp.jobdescription.content">ID</label>
+                    <input type="text" class="form-control" id="contentId" name="contentId" formControlName="contentId" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="emobyMphApp.jobdescription.filename" for="field_filename">Filename</label>
+                    <input type="text" class="form-control" name="filename" id="field_filename"
+                           formControlName="filename"/>
+                    <div *ngIf="editForm.get('filename')!.invalid && (editForm.get('filename')!.dirty || editForm.get('filename')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('filename')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="emobyMphApp.content.data" for="field_data">Data</label>
+                    <div>
+                        <div *ngIf="editForm.get('data')!.value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('dataContentType')!.value, editForm.get('data')!.value)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{ editForm.get('dataContentType')!.value }}, {{ byteSize(editForm.get('data')!.value) }}</span>
+                            <button type="button" (click)="editForm.patchValue({data: null});editForm.patchValue({dataContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_data" (change)="setFileData($event, 'data', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="data" id="field_data"
+                           formControlName="data"/>
+                    <input type="hidden" class="form-control" name="dataContentType" id="field_dataContentType"
+                           formControlName="dataContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="emobyMphApp.content.text" for="field_text">Text</label>
+                    <textarea class="form-control" name="text" id="field_text"
+                              formControlName="text"></textarea>
+                </div>
+            </div>
+
+            <div class="mb-5" align="right">
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

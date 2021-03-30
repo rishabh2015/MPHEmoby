@@ -1,0 +1,23 @@
+{
+  "emobyMphApp": {
+    "projectphase": {
+      "home": {
+        "title": "Projectphases",
+        "createLabel": "Créer un nouveau Projectphase",
+        "createOrEditLabel": "Créer ou éditer un Projectphase",
+        "notFound": "Aucun Projectphase trouvé"
+      },
+      "created": "Un nouveau Projectphase a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Projectphase avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Projectphase avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Projectphase {{ id }} ?"
+      },
+      "detail": {
+        "title": "Projectphase"
+      },
+      "code": "Code",
+      "libelle": "Libelle"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<jhi-page-ribbon></jhi-page-ribbon>
+<div class="parent" [ngSwitch]="isAuthenticated()">
+    
+    <div class="childOne" *ngSwitchCase="false">
+        <div id="home-background"></div>
+        <div id="home-img"></div>
+    </div>
+    <div *ngSwitchCase="true">
+        <router-outlet name="navbar"></router-outlet>
+    </div>
+    <div class="page-content p-5" id="content">        
+        <router-outlet></router-outlet>
+    </div>
+</div>

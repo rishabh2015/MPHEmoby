@@ -1,0 +1,37 @@
+version: '2'
+services:
+  emobymph-app:
+    image: registry.gitlab.com/datascienceassystem/emoby-mph:package1-387e51da32cf0c2bd058db23a4e4bd73b8cb2ccd
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=prod,swagger
+      - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/emobyMPH
+      - SPRING_DATASOURCE_USERNAME=emobyMPH
+      - SPRING_DATASOURCE_PASSWORD=
+      - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
+      - APPLICATION_EMOBYMPHSERVICEURL=http://172.28.242.9:5010/api/v1/candidates
+      - APPLICATION_TEXTCLEANTIMEOUT=15
+      - APPLICATION_EMOBYMATCHINGTIMEOUT=30
+      - APPLICATION_MPHDYNAMICSSERVICEURL=https://apicrmforemoby.azurewebsites.net/Services
+      - APPLICATION_PROXYHOST=172.20.210.22
+      - APPLICATION_PROXYPORT=9090
+    ports:
+      - 8080:8080
+    network_mode: host
+
+
+  emobymph-postgresql:
+    image: postgres:12.3
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=emobyMPH
+      - POSTGRES_PASSWORD=
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5432:5432
+    network_mode: host
+
+volumes:
+    db-data:

@@ -1,0 +1,133 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="emobyMphApp.candidate.home.title">Candidates</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-candidate" [routerLink]="['/candidate/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="emobyMphApp.candidate.home.createLabel">
+            Create a new Candidate
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="candidates?.length === 0">
+        <span jhiTranslate="emobyMphApp.candidate.home.notFound">No candidates found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="candidates && candidates.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="gender"><span jhiTranslate="emobyMphApp.candidate.gender">Gender</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="last_name"><span jhiTranslate="emobyMphApp.candidate.last_name">Last Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="first_name"><span jhiTranslate="emobyMphApp.candidate.first_name">First Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="date_of_birth"><span jhiTranslate="emobyMphApp.candidate.date_of_birth">Date Of Birth</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="text_clean"><span jhiTranslate="emobyMphApp.candidate.text_clean">Text Clean</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="guid"><span jhiTranslate="emobyMphApp.candidate.guid">Guid</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="creation_date"><span jhiTranslate="emobyMphApp.candidate.creation_date">Creation Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="update_date"><span jhiTranslate="emobyMphApp.candidate.update_date">Update Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="comment"><span jhiTranslate="emobyMphApp.candidate.comment">Comment</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="email"><span jhiTranslate="emobyMphApp.candidate.email">Email</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="phone_number"><span jhiTranslate="emobyMphApp.candidate.phone_number">Phone Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="nationalityId"><span jhiTranslate="emobyMphApp.candidate.nationality">Nationality</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="locationId"><span jhiTranslate="emobyMphApp.candidate.location">Location</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="educationlevelId"><span jhiTranslate="emobyMphApp.candidate.educationlevel">Educationlevel</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="experienceId"><span jhiTranslate="emobyMphApp.candidate.experience">Experience</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="mobyStatusId"><span jhiTranslate="emobyMphApp.candidate.mobyStatus">Moby Status</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="shortlistedId"><span jhiTranslate="emobyMphApp.candidate.shortlisted">Shortlisted</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="placedId"><span jhiTranslate="emobyMphApp.candidate.placed">Placed</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let candidate of candidates ;trackBy: trackId">
+                    <td><a [routerLink]="['/candidate', candidate.id, 'view']">{{ candidate.id }}</a></td>
+                    <td jhiTranslate="{{ 'emobyMphApp.Gender.' + candidate.gender }}">{{ candidate.gender }}</td>
+                    <td>{{ candidate.last_name }}</td>
+                    <td>{{ candidate.first_name }}</td>
+                    <td>{{ candidate.date_of_birth | date:'mediumDate' }}</td>
+                    <td>{{ candidate.text_clean }}</td>
+                    <td>{{ candidate.guid }}</td>
+                    <td>{{ candidate.creation_date | date:'medium' }}</td>
+                    <td>{{ candidate.update_date | date:'medium' }}</td>
+                    <td>{{ candidate.comment }}</td>
+					<td>{{ candidate.email }}</td>
+                    <td>{{ candidate.phone_number }}</td>
+                    <td>
+                        <div *ngIf="candidate.nationality">
+                            <a [routerLink]="['/country', candidate.nationality , 'view']" >{{ candidate.nationality.libelle }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="candidate.location">
+                            <a [routerLink]="['/country', candidate.location , 'view']" >{{ candidate.location.libelle }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="candidate.educationlevel">
+                            <a [routerLink]="['/educationlevel', candidate.educationlevel , 'view']" >{{ candidate.educationlevel.libelle }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="candidate.experience">
+                            <a [routerLink]="['/experience', candidate.experience , 'view']" >{{ candidate.experience.libelle }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="candidate.mobyStatus">
+                            <a [routerLink]="['/moby-status', candidate.mobyStatus , 'view']" >{{ candidate.mobyStatus.libelle }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="candidate.shortlistedId">
+                            <a [routerLink]="['/jobdescription', candidate.shortlistedId , 'view']" >{{ candidate.shortlistedId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="candidate.placedId">
+                            <a [routerLink]="['/jobdescription', candidate.placedId , 'view']" >{{ candidate.placedId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/candidate', candidate.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/candidate', candidate.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(candidate)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="candidates && candidates.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

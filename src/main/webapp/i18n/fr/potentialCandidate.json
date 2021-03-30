@@ -1,0 +1,25 @@
+{
+  "emobyMphApp": {
+    "potentialCandidate": {
+      "home": {
+        "title": "PotentialCandidates",
+        "createLabel": "Créer un nouveau Potential Candidate",
+        "createOrEditLabel": "Créer ou éditer un Potential Candidate",
+        "notFound": "Aucun Potential Candidate trouvé"
+      },
+      "created": "Un nouveau Potential Candidate a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Potential Candidate avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Potential Candidate avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Potential Candidate {{ id }} ?"
+      },
+      "detail": {
+        "title": "Potential Candidate"
+      },
+      "matching_percent": "Matching Percent",
+      "creation_dt": "Creation Dt",
+      "jobdescription": "Jobdescription",
+      "candidate": "Candidate"
+    }
+  }
+}

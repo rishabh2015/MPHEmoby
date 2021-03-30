@@ -1,0 +1,136 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="candidate">
+            <h2><span jhiTranslate="emobyMphApp.candidate.detail.title">Candidate</span> {{ candidate.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="emobyMphApp.candidate.gender">Gender</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'emobyMphApp.Gender.' + candidate.gender }}">{{ candidate.gender }}</span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidate.last_name">Last Name</span></dt>
+                <dd>
+                    <span>{{ candidate.last_name }}</span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidate.first_name">First Name</span></dt>
+                <dd>
+                    <span>{{ candidate.first_name }}</span>
+                </dd>
+				<dt><span jhiTranslate="emobyMphApp.candidate.email">Email</span></dt>
+                <dd>
+                    <span>{{ candidate.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidate.phone_number">Phone Number</span></dt>
+                <dd>
+                    <span>{{ candidate.phone_number }}</span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidate.date_of_birth">Date Of Birth</span></dt>
+                <dd>
+                    <span>{{ candidate.date_of_birth }}</span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidate.text_clean">Text Clean</span></dt>
+                <dd>
+                    <span>{{ candidate.text_clean }}</span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidate.guid">Guid</span></dt>
+                <dd>
+                    <span>{{ candidate.guid }}</span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidate.creation_date">Creation Date</span></dt>
+                <dd>
+                    <span>{{ candidate.creation_date }}</span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidate.update_date">Update Date</span></dt>
+                <dd>
+                    <span>{{ candidate.update_date }}</span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidate.comment">Comment</span></dt>
+                <dd>
+                    <span>{{ candidate.comment }}</span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidate.nationality">Nationality</span></dt>
+                <dd>
+                    <div *ngIf="candidate.nationality">
+                        <a [routerLink]="['/country', candidate.nationality, 'view']">{{ candidate.nationality.libelle }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidate.dualNationality">Dual Nationality</span></dt>
+                <dd>
+                    <span *ngFor="let dualNationality of candidate.dualNationalities; let last = last">
+                        <a [routerLink]="['/country', dualNationality?.id, 'view']">{{ dualNationality.libelle }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidate.location">Location</span></dt>
+                <dd>
+                    <div *ngIf="candidate.location">
+                        <a [routerLink]="['/country', candidate.location, 'view']">{{ candidate.location.libelle }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidate.educationlevel">Educationlevel</span></dt>
+                <dd>
+                    <div *ngIf="candidate.educationlevel">
+                        <a [routerLink]="['/educationlevel', candidate.educationlevel, 'view']">{{ candidate.educationlevel.libelle }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidate.experience">Experience</span></dt>
+                <dd>
+                    <div *ngIf="candidate.experience">
+                        <a [routerLink]="['/experience', candidate.experience, 'view']">{{ candidate.experience.libelle }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidate.mobyStatus">Moby Status</span></dt>
+                <dd>
+                    <div *ngIf="candidate.mobyStatus">
+                        <a [routerLink]="['/moby-status', candidate.mobyStatus, 'view']">{{ candidate.mobyStatus.libelle }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidate.sectorSubsector">Sector Subsector</span></dt>
+                <dd>
+                    <span *ngFor="let sectorSubsector of candidate.sectorSubsectors; let last = last">
+                        <a [routerLink]="['/sector-subsector', sectorSubsector?.id, 'view']">{{ sectorSubsector.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidate.projectphaseActivity">Projectphase Activity</span></dt>
+                <dd>
+                    <span *ngFor="let projectphaseActivity of candidate.projectphaseActivities; let last = last">
+                        <a [routerLink]="['/projectphase-activity', projectphaseActivity?.id, 'view']">{{ projectphaseActivity.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidate.technicalDiscipline">Technical Discipline</span></dt>
+                <dd>
+                    <span *ngFor="let technicalDiscipline of candidate.technicalDisciplines; let last = last">
+                        <a [routerLink]="['/technical-discipline', technicalDiscipline?.id, 'view']">{{ technicalDiscipline.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidate.shortlisted">Shortlisted</span></dt>
+                <dd>
+                    <div *ngIf="candidate.shortlistedId">
+                        <a [routerLink]="['/jobdescription', candidate.shortlistedId, 'view']">{{ candidate.shortlistedId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidate.placed">Placed</span></dt>
+                <dd>
+                    <div *ngIf="candidate.placedId">
+                        <a [routerLink]="['/jobdescription', candidate.placedId, 'view']">{{ candidate.placedId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/candidate', candidate.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

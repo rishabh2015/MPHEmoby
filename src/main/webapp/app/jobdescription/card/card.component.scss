@@ -1,0 +1,96 @@
+.scoreContainer {
+  border: 3px solid #6c8cde;
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  display: inline-block;
+}
+.score {
+  font-weight: bold;
+  font-size: 1.25em;
+  margin-top: 23px;
+  color: #6c8cde;
+}
+h6 {
+  font-weight: 500;
+  margin-top: 1.25em;
+  color: #6c8cde;
+}
+.opencv {
+  font-size: 0.75em;
+  font-weight: bold;
+  color: rgb(56, 140, 178);
+}
+
+h4 {
+  font-weight: bold;
+  color: #6c8cde;
+  margin-top: 2.25em;
+}
+h5 {
+  font-weight: bold;
+  color: #6c8cde;
+}
+
+li {
+  font-weight: 500;
+}
+
+.scoreContainerOne {
+  border: 4px solid #6c8cde;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.scoreOne {
+  font-weight: bold;
+  font-size: 2em;
+  margin-top: 30px;
+  text-align: center;
+  color: #6c8cde;
+}
+img {
+  width: 40px;
+  height: 40px;
+}
+
+p-dialog:hover {
+  cursor: pointer;
+}
+
+.p-dialog .p-dialog-header {
+  display: none !important;
+}
+
+.paginator {
+  margin-top: 1em;
+  text-align: center;
+  margin-left: -9rem;
+}
+.blue {
+  color: #6c8cde;
+}
+.green {
+  color: green;
+}
+p {
+  margin-top: 1.25em;
+}
+.etoileEmoby {
+  background-image: url('../../../content/check.svg');
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-size: 16px 16px;
+  margin-top: 4px;
+}
+.etoileEmobyGreen {
+  background-image: url('../../../content/check-vert.svg');
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-size: 16px 16px;
+  margin-top: 4px;
+}

@@ -1,0 +1,23 @@
+{
+  "emobyMphApp": {
+    "sectorsubsector": {
+      "home": {
+        "title": "Sector_SubSectors",
+        "createLabel": "Créer un nouveau Sector_Subsector",
+        "createOrEditLabel": "Créer ou éditer un Sector_Subsector",
+        "notFound": "Aucun Sector_Subsector trouvé"
+      },
+      "created": "Un nouveau Sector_Subsector a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Sector_Subsector avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Sector_Subsector avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Sector_Subsector {{ id }} ?"
+      },
+      "detail": {
+        "title": "Sector_Subsector"
+      },
+      "sector": "Sector",
+      "subsector": "Subsector"
+    }
+  }
+}

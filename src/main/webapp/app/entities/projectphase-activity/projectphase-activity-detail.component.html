@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="projectphaseActivity">
+            <h2><span jhiTranslate="emobyMphApp.projectphaseActivity.detail.title">Projectphase Activity</span> {{ projectphaseActivity.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="emobyMphApp.projectphaseActivity.projectphase">Projectphase</span></dt>
+                <dd>
+                    <div *ngIf="projectphaseActivity.projectphaseId">
+                        <a [routerLink]="['/projectphase', projectphaseActivity.projectphaseId, 'view']">{{ projectphaseActivity.projectphaseId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.projectphaseActivity.activity">Activity</span></dt>
+                <dd>
+                    <div *ngIf="projectphaseActivity.activityId">
+                        <a [routerLink]="['/activity', projectphaseActivity.activityId, 'view']">{{ projectphaseActivity.activityId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/projectphase-activity', projectphaseActivity.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

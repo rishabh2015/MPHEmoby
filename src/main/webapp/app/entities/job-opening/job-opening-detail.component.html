@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="jobOpening">
+            <h2><span jhiTranslate="emobyMphApp.jobOpening.detail.title">Job Opening</span> {{ jobOpening.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="emobyMphApp.jobOpening.title">Title</span></dt>
+                <dd>
+                    <span>{{ jobOpening.title }}</span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.jobOpening.guid">Guid</span></dt>
+                <dd>
+                    <span>{{ jobOpening.guid }}</span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.jobOpening.text_clean">Text Clean</span></dt>
+                <dd>
+                    <span>{{ jobOpening.text_clean }}</span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.jobOpening.file">File</span></dt>
+                <dd>
+                    <div *ngIf="jobOpening.file">
+                        <a (click)="openFile(jobOpening.fileContentType, jobOpening.file)" jhiTranslate="entity.action.open">open</a>
+                        {{ jobOpening.fileContentType }}, {{ byteSize(jobOpening.file) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.jobOpening.creation_date">Creation Date</span></dt>
+                <dd>
+                    <span>{{ jobOpening.creation_date }}</span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.jobOpening.delete_date">Delete Date</span></dt>
+                <dd>
+                    <span>{{ jobOpening.delete_date }}</span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.jobOpening.jobdescription_text">Jobdescription Text</span></dt>
+                <dd>
+                    <span>{{ jobOpening.jobdescription_text }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/job-opening', jobOpening.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

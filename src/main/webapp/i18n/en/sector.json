@@ -1,0 +1,23 @@
+{
+  "emobyMphApp": {
+    "sector": {
+      "home": {
+        "title": "Sectors",
+        "createLabel": "Create a new Sector",
+        "createOrEditLabel": "Create or edit a Sector",
+        "notFound": "No Sectors found"
+      },
+      "created": "A new Sector is created with identifier {{ param }}",
+      "updated": "A Sector is updated with identifier {{ param }}",
+      "deleted": "A Sector is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Sector {{ id }}?"
+      },
+      "detail": {
+        "title": "Sector"
+      },
+      "code": "Code",
+      "libelle": "Libelle"
+    }
+  }
+}

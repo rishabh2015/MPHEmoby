@@ -1,0 +1,44 @@
+{
+  "emobyMphApp": {
+    "jobdescription-detail": {
+      "home": {
+        "title": "Matching Results",
+        "potentialCandidates": "POTENTIAL CANDIDATES",
+        "shortlisted": "SHORTLISTED",
+        "placed": "PLACED",
+        "pressToShortList": "Press the star to shortlist a candidate"
+      },
+      "popup": {
+        "generalInfos": {
+          "generalInformations": "General informations",
+          "firstName": "First name :",
+          "gender": "Gender :",
+          "email": "E-mail :",
+          "nationality": "Nationality :",
+          "currentLocation": "Current location :",
+          "lastName": "Last name :",
+          "dateOfBirth": "Date of birth :",
+          "countryCode": "County code :",
+          "dualNationality": "Dual nationality :"
+        },
+        "skillsInfos": {
+          "skillsInformations": "Skills informations",
+          "higherEducationLevel": "Higher education level :",
+          "experience": "Experience :",
+          "activities": "Activities :",
+          "sector": "Sector :",
+          "sectorCandidateLookup": "Sector candidate lookup :",
+          "languageCandidateLookup": "Language candidate lookup :",
+          "discipline": "Discipline :",
+          "projectPhase": "Project phase :",
+          "technicalDiscipline": "Technical discipline :",
+          "subSector": "Sub sector :",
+          "language": "Language :"
+        },
+        "cv": {
+          "openOriginalCv": "Open Original CV"
+        }
+      }
+    }
+  }
+}

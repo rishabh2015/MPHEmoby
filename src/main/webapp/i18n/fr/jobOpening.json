@@ -1,0 +1,28 @@
+{
+  "emobyMphApp": {
+    "jobOpening": {
+      "home": {
+        "title": "JobOpenings",
+        "createLabel": "Créer un nouveau Job Opening",
+        "createOrEditLabel": "Créer ou éditer un Job Opening",
+        "notFound": "Aucun Job Opening trouvé"
+      },
+      "created": "Un nouveau Job Opening a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Job Opening avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Job Opening avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Job Opening {{ id }} ?"
+      },
+      "detail": {
+        "title": "Job Opening"
+      },
+      "title": "Title",
+      "guid": "Guid",
+      "text_clean": "Text Clean",
+      "file": "File",
+      "creation_date": "Creation Date",
+      "delete_date": "Delete Date",
+      "jobdescription_text": "Jobdescription Text"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Sectorsubsector.
+    -->
+    <changeSet id="20201002143624-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="sector_id"
+                                 baseTableName="sector_subsector"
+                                 constraintName="fk_sectorsubsector_sector_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sector"/>
+
+        <addForeignKeyConstraint baseColumnNames="subsector_id"
+                                 baseTableName="sector_subsector"
+                                 constraintName="fk_sectorsubsector_subsector_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="subsector"/>
+
+		<addUniqueConstraint
+			columnNames="sector_id, subsector_id"
+			constraintName="sectorsubsector_subsector_constraint" tableName="sector_subsector" />
+    </changeSet>
+</databaseChangeLog>

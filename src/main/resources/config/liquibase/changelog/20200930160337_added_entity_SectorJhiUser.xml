@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    
+
+    <changeSet id="20200930160337-1-relations" author="dd">
+        
+        <createTable tableName="lien_sector_jhiuser">
+            <column name="sector_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="jhiuser_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="sector_id, jhiuser_id" tableName="lien_sector_jhiuser"/>
+        
+		<addForeignKeyConstraint baseColumnNames="sector_id"
+						 baseTableName="lien_sector_jhiuser"
+						 constraintName="fk_lien_sector_jhiuser_sector_id"
+						 referencedColumnNames="id"
+						 referencedTableName="sector"/>
+
+        <addForeignKeyConstraint baseColumnNames="jhiuser_id"
+                                 baseTableName="lien_sector_jhiuser"
+                                 constraintName="fk_lien_sector_jhiuser_jhiuser_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+    </changeSet>
+ 
+</databaseChangeLog>

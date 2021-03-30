@@ -1,0 +1,71 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="emobyMphApp.sectorsubsector.home.title">Sectorsubsectors</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-sectorsubsector" [routerLink]="['/sectorsubsector/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="emobyMphApp.sectorsubsector.home.createLabel">
+            Create a new Sectorsubsector
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="sectorsubsectors?.length === 0">
+        <span jhiTranslate="emobyMphApp.sectorsubsector.home.notFound">No sectorsubsectors found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="sectorsubsectors && sectorsubsectors.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="emobyMphApp.sectorsubsector.sector">Sector</span></th>
+                    <th scope="col" ><span jhiTranslate="emobyMphApp.sectorsubsector.subsector">Subsector</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let sectorsubsector of sectorsubsectors ;trackBy: trackId">
+                    <td><a [routerLink]="['/sectorsubsector', sectorsubsector.id, 'view']">{{ sectorsubsector.id }}</a></td>
+                    <td>
+                        <div *ngIf="sectorsubsector.sectorId">
+                            <a [routerLink]="['/sector', sectorsubsector.sectorId , 'view']" >{{ sectorsubsector.sectorLibelle }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="sectorsubsector.subsectorId">
+                            <a [routerLink]="['/subsector', sectorsubsector.subsectorId , 'view']" >{{ sectorsubsector.subsectorLibelle }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/sectorsubsector', sectorsubsector.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/sectorsubsector', sectorsubsector.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(sectorsubsector)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

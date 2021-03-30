@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+
+	<changeSet id="20211122073205-1" author="jhipster" dbms="postgresql">
+
+		<addColumn tableName="candidate">
+			<column name="text_clean_vector" type="tsvector">
+				<constraints nullable="true" />
+			</column>
+		</addColumn>
+
+		<sql>
+			CREATE INDEX candidates_search_idx ON candidate USING
+			gin(text_clean_vector);
+
+		</sql>
+	</changeSet>
+
+	<changeSet id="20211122073205-trigger" author="jhipster" dbms="postgresql">
+		<sql>
+			CREATE TRIGGER text_clean_vector_update BEFORE INSERT OR UPDATE
+			ON candidate FOR EACH ROW EXECUTE PROCEDURE
+			tsvector_update_trigger(text_clean_vector, 'pg_catalog.simple',
+			text_clean);
+		</sql>
+	</changeSet>
+</databaseChangeLog>

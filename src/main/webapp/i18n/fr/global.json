@@ -1,0 +1,247 @@
+{
+  "global": {
+    "title": "EmobyMPH",
+    "browsehappy": "Vous utilisez un <strong>ancien</strong> navigateur. Veuillez <a href=\"http://browsehappy.com/?locale=fr\">mettre à jour votre navigateur</a> pour une meilleure expérience.",
+    "menu": {
+      "home": "Accueil",
+      "dashboard": "Dashboard",
+      "jobdescription": "Tableaux des recherches",
+      "candidatesearch": "Rechercher des candidats",
+      "primeng": {
+        "main": "primeng",
+        "barchart": "BarChart",
+        "doughnutchart": "DoughnutChart",
+        "linechart": "LineChart",
+        "piechart": "PieChart",
+        "polarareachart": "PolarAreaChart",
+        "radarchart": "RadarChart",
+        "button": "Button",
+        "splitbutton": "SplitButton",
+        "inputgroup": "InputGroup",
+        "inputtext": "InputText",
+        "inputtextarea": "InputTextArea",
+        "calendar": "Calendar",
+        "chips": "Chips",
+        "inputswitch": "InputSwitch",
+        "inputmask": "InputMask",
+        "passwordindicator": "Password Indicator",
+        "rating": "Rating",
+        "spinner": "Spinner",
+        "togglebutton": "ToggleButton",
+        "autocomplete": "AutoComplete",
+        "checkbox": "Checkbox&TriCheckbox",
+        "colorpicker": "ColorPicker",
+        "editor": "Editor",
+        "listbox": "Listbox",
+        "select": "MultiSelect&Dropdown",
+        "radiobutton": "RadioButton",
+        "slider": "Slider",
+        "selectbutton": "SelectButton",
+        "galleria": "Galleria",
+        "messages": "Messages",
+        "toast": "Toast",
+        "dialog": "Dialog",
+        "confirmdialog": "ConfirmDialog",
+        "lightbox": "Lightbox",
+        "overlaypanel": "OverlayPanel",
+        "sidebar": "SideBar",
+        "tooltip": "Tooltip",
+        "table": "Table",
+        "carousel": "Carousel",
+        "orderlist": "OrderList",
+        "dataview": "DataView",
+        "paginator": "Paginator",
+        "fullcalendar": "FullCalendar",
+        "treetable": "TreeTable",
+        "virtualscroller": "VirtualScroller",
+        "orgchart": "OrgChart",
+        "gmap": "Gmap",
+        "picklist": "PickList",
+        "tree": "Tree",
+        "dragdrop": "DragDrop",
+        "menu": "Menu",
+        "contextmenu": "ContextMenu",
+        "panelmenu": "PanelMenu",
+        "steps": "Steps",
+        "tieredmenu": "TieredMenu",
+        "breadcrumb": "Breadcrumb",
+        "megamenu": "MegaMenu",
+        "menubar": "Menubar",
+        "slidemenu": "SlideMenu",
+        "tabmenu": "TabMenu",
+        "fileupload": "FileUpload",
+        "accordion": "Accordion",
+        "panel": "Panel",
+        "tabview": "TabView",
+        "fieldset": "Fieldset",
+        "toolbar": "Toolbar",
+        "validation": "validation",
+        "captcha": "Captcha",
+        "defer": "Defer",
+        "rtl": "RTL",
+        "blockui": "BlockUI",
+        "terminal": "Terminal",
+        "inplace": "Inplace",
+        "progressbar": "ProgressBar",
+        "progressspinner": "ProgressSpinner",
+        "scrollpanel": "ScrollPanel",
+        "card": "Card",
+        "flexgrid": "FlexGrid",
+        "keyfilter": "KeyFilter"
+      },
+      "sidebar": "Sidebar",
+      "candidate-search": "Candidate Search",
+      "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
+      "entities": {
+        "main": "Entités",
+        "experience": "Experience",
+        "educationlevel": "Educationlevel",
+        "language": "Language",
+        "sector": "Sector",
+        "jobdescription": "JobDescription",
+        "project": "Project",
+        "projectphase": "ProjectPhase",
+        "subsector": "Subsector",
+        "sectorsubsector": "Sector_Subsector",
+        "activity": "Activity",
+        "projectphaseActivity": "ProjectPhase_Activity",
+        "technicalDiscipline": "Technical Discipline",
+        "country": "Country",
+        "candidate-level-language": "Level Language",
+        "content": "Content",
+        "potentialCandidate": "Potential Candidate",
+        "levelLanguage": "Level Language",
+        "candidate": "Candidate",
+        "jobOpening": "JobOpening",
+        "mobyStatus": "Moby Status",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "account": {
+        "main": "Compte",
+        "settings": "Profil",
+        "password": "Mot de passe",
+        "sessions": "Sessions",
+        "login": "S'authentifier",
+        "logout": "Déconnexion",
+        "register": "Créer un compte"
+      },
+      "admin": {
+        "main": "Administration",
+        "userManagement": "Gestion des utilisateurs",
+        "tracker": "Suivi des utilisateurs",
+        "metrics": "Métriques",
+        "health": "Diagnostics",
+        "configuration": "Configuration",
+        "logs": "Logs",
+        "audits": "Audits",
+        "apidocs": "API",
+        "database": "Base de données",
+        "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
+      },
+      "language": "Langue"
+    },
+    "form": {
+      "username.label": "Nom d'utilisateur",
+      "username.placeholder": "Votre nom d'utilisateur",
+      "currentpassword.label": "Mot de passe actuel",
+      "currentpassword.placeholder": "Mot de passe actuel",
+      "newpassword.label": "Nouveau mot de passe",
+      "newpassword.placeholder": "Nouveau mot de passe",
+      "confirmpassword.label": "Confirmation du nouveau mot de passe",
+      "confirmpassword.placeholder": "Confirmation du nouveau mot de passe",
+      "email.label": "Email",
+      "email.placeholder": "Votre email"
+    },
+    "messages": {
+      "info": {
+        "authenticated": {
+          "prefix": "Si vous voulez vous ",
+          "link": "connecter",
+          "suffix": ", vous pouvez utiliser les comptes par défaut : <br/> - Administrateur (nom d'utilisateur=\"admin\" et mot de passe =\"admin\") <br/> - Utilisateur (nom d'utilisateur=\"user\" et mot de passe =\"user\")."
+        },
+        "register": {
+          "noaccount": "Vous n'avez pas encore de compte ?",
+          "link": "Créer un compte"
+        }
+      },
+      "error": {
+        "dontmatch": "Le nouveau mot de passe et sa confirmation ne sont pas égaux !"
+      },
+      "validate": {
+        "newpassword": {
+          "required": "Votre mot de passe est requis.",
+          "minlength": "Votre mot de passe doit comporter au moins 4 caractères.",
+          "maxlength": "Votre mot de passe ne doit pas comporter plus de 50 caractères.",
+          "strength": "Robustesse du mot de passe :"
+        },
+        "confirmpassword": {
+          "required": "Votre confirmation du mot de passe est requise.",
+          "minlength": "Votre confirmation du mot de passe doit comporter au moins 4 caractères.",
+          "maxlength": "Votre confirmation du mot de passe ne doit pas comporter plus de 50 caractères."
+        },
+        "email": {
+          "required": "Votre email est requis.",
+          "minlength": "Votre email doit comporter au moins 5 caractères.",
+          "maxlength": "Votre email ne doit pas comporter plus de 50 caractères.",
+          "invalid": "Votre email n'est pas valide."
+        }
+      }
+    },
+    "field": {
+      "id": "ID"
+    },
+    "ribbon": {
+      "dev": "Développement"
+    },
+    "item-count": "Affichage {{first}} - {{second}} de {{total}} items."
+  },
+  "entity": {
+    "action": {
+      "addblob": "Ajouter blob",
+      "addimage": "Ajouter image",
+      "back": "Retour",
+      "cancel": "Annuler",
+      "edit": "Editer",
+      "delete": "Supprimer",
+      "open": "Ouvrir",
+      "save": "Sauvegarder",
+      "view": "Voir"
+    },
+    "detail": {
+      "field": "Champs",
+      "value": "Valeur"
+    },
+    "delete": {
+      "title": "Confirmation de suppression"
+    },
+    "validation": {
+      "required": "Ce champ est obligatoire.",
+      "minlength": "Ce champ doit faire au minimum {{min}} caractères.",
+      "maxlength": "Ce champ doit faire moins de {{max}} caractères.",
+      "min": "Ce champ doit être supérieur à {{min}}.",
+      "max": "Ce champ doit être inférieur à {{max}}.",
+      "minbytes": "Ce champ doit être supérieur à {{min}} bytes.",
+      "maxbytes": "Ce champ doit être inférieur à {{max}} bytes.",
+      "pattern": "Ce champ doit suivre l'expression régulière {{pattern}}.",
+      "number": "Ce champ doit être un nombre.",
+      "datetimelocal": "Ce champ doit être une date et une heure.",
+      "patternLogin": "Ce champ ne peut contenir que des lettres, des chiffres ou des adresses e-mail."
+    }
+  },
+  "error": {
+    "internalServerError": "Erreur interne du serveur",
+    "server.not.reachable": "Serveur inaccessible",
+    "url.not.found": "Non trouvé",
+    "NotNull": "Le champ {{fieldName}} ne peut pas être vide !",
+    "Size": "Le champ {{fieldName}} ne respecte pas les critères minimum et maximum !",
+    "userexists": "Login déjà utilisé !",
+    "emailexists": "Email déjà utilisé !",
+    "idexists": "Une nouvelle entité {{entityName}} ne peut pas avoir d'identifiant !",
+    "idnull": "Identifiant invalide",
+    "file": {
+      "could.not.extract": "Impossible d'extraire le fichier",
+      "not.image": "Le fichier doit être une image et non du type \"{{ fileType }}\""
+    }
+  },
+  "footer": "Ceci est votre pied de page"
+}

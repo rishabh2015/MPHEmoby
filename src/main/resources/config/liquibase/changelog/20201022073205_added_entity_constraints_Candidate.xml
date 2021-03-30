@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Candidate.
+    -->
+    <changeSet id="20201022073205-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="nationality_id"
+                                 baseTableName="candidate"
+                                 constraintName="fk_candidate_nationality_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="country"/>
+
+        <addForeignKeyConstraint baseColumnNames="candidate_id"
+                                 baseTableName="candidate_dual_nationality"
+                                 constraintName="fk_candidate_dual_nationality_candidate_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="candidate"/>
+
+        <addForeignKeyConstraint baseColumnNames="dual_nationality_id"
+                                 baseTableName="candidate_dual_nationality"
+                                 constraintName="fk_candidate_dual_nationality_dual_nationality_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="country"/>
+        
+        <addForeignKeyConstraint baseColumnNames="location_id"
+                                 baseTableName="candidate"
+                                 constraintName="fk_candidate_location_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="country"/>
+
+        <addForeignKeyConstraint baseColumnNames="educationlevel_id"
+                                 baseTableName="candidate"
+                                 constraintName="fk_candidate_educationlevel_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="education_level"/>
+
+        <addForeignKeyConstraint baseColumnNames="experience_id"
+                                 baseTableName="candidate"
+                                 constraintName="fk_candidate_experience_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="experience"/>
+
+        <addForeignKeyConstraint baseColumnNames="candidate_id"
+                                 baseTableName="candidate_sector_subsector"
+                                 constraintName="fk_candidate_sector_subsector_candidate_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="candidate"/>
+
+        <addForeignKeyConstraint baseColumnNames="sector_subsector_id"
+                                 baseTableName="candidate_sector_subsector"
+                                 constraintName="fk_candidate_sector_subsector_sector_subsector_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sector_subsector"/>
+        
+        <addForeignKeyConstraint baseColumnNames="candidate_id"
+                                 baseTableName="candidate_projectphase_activity"
+                                 constraintName="fk_candidate_projectphase_activity_candidate_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="candidate"/>
+
+        <addForeignKeyConstraint baseColumnNames="projectphase_activity_id"
+                                 baseTableName="candidate_projectphase_activity"
+                                 constraintName="fk_candidate_projectphase_activity_projectphase_activity_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="projectphase_activity"/>
+        
+        <addForeignKeyConstraint baseColumnNames="candidate_id"
+                                 baseTableName="candidate_technical_discipline"
+                                 constraintName="fk_candidate_technical_discipline_candidate_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="candidate"/>
+
+        <addForeignKeyConstraint baseColumnNames="technical_discipline_id"
+                                 baseTableName="candidate_technical_discipline"
+                                 constraintName="fk_candidate_technical_discipline_technical_discipline_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="technicaldiscipline"/>
+        
+        <addForeignKeyConstraint baseColumnNames="shortlisted_id"
+                                 baseTableName="candidate"
+                                 constraintName="fk_candidate_shortlisted_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jobdescription"/>
+
+        <addForeignKeyConstraint baseColumnNames="placed_id"
+                                 baseTableName="candidate"
+                                 constraintName="fk_candidate_placed_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jobdescription"/>
+
+    </changeSet>
+</databaseChangeLog>

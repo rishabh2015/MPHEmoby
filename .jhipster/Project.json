@@ -1,0 +1,40 @@
+{
+  "fluentMethods": true,
+  "clientRootFolder": "",
+  "relationships": [
+    {
+      "relationshipName": "jhi_user",
+      "otherEntityName": "user",
+      "relationshipType": "many-to-one",
+      "otherEntityRelationshipName": "project_user_relationship",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipName": "jobdescription",
+      "otherEntityName": "jobdescription",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "project"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "libelle",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "changelogDate": "20200929101329",
+  "dto": "mapstruct",
+  "searchEngine": false,
+  "service": "serviceClass",
+  "entityTableName": "project",
+  "databaseType": "sql",
+  "readOnly": false,
+  "jpaMetamodelFiltering": false,
+  "pagination": "no"
+}

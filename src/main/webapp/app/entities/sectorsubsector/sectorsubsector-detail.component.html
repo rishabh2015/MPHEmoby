@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="sectorsubsector">
+            <h2><span jhiTranslate="emobyMphApp.sectorsubsector.detail.title">Sectorsubsector</span> {{ sectorsubsector.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="emobyMphApp.sectorsubsector.sector">Sector</span></dt>
+                <dd>
+                    <div *ngIf="sectorsubsector.sectorId">
+                        <a [routerLink]="['/sector', sectorsubsector.sectorId, 'view']">{{ sectorsubsector.sectorId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.sectorsubsector.subsector">Subsector</span></dt>
+                <dd>
+                    <div *ngIf="sectorsubsector.subsectorId">
+                        <a [routerLink]="['/subsector', sectorsubsector.subsectorId, 'view']">{{ sectorsubsector.subsectorId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/sectorsubsector', sectorsubsector.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

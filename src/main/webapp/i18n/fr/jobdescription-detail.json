@@ -1,0 +1,44 @@
+{
+  "emobyMphApp": {
+    "jobdescription-detail": {
+      "home": {
+        "title": "Résultats Matching",
+        "potentialCandidates": "Candidats potentiels",
+        "shortlisted": "Présélectionne",
+        "placed": "Placé",
+        "pressToShortList": "Appuyez sur l'étoile pour présélectionner un candidat"
+      },
+      "popup": {
+        "generalInfos": {
+          "generalInformations": "Informations générales",
+          "firstName": "Prénom :",
+          "gender": "Genre :",
+          "email": "E-mail :",
+          "nationality": "Nationalité :",
+          "currentLocation": "Localisation Actuelle :",
+          "lastName": "Nom de famille :",
+          "dateOfBirth": "Date de naissance :",
+          "countryCode": "Code postal :",
+          "dualNationality": "Double nationalité :"
+        },
+        "skillsInfos": {
+          "skillsInformations": "Inforamtions sur les compétences",
+          "higherEducationLevel": "Niveau supérieur :",
+          "experience": "Expérience :",
+          "activities": "Activités :",
+          "sector": "Secteur :",
+          "sectorCandidateLookup": "Recherche de candidats par secteur :",
+          "languageCandidateLookup": "Recherche de candidats par langue :",
+          "discipline": "Discipline :",
+          "projectPhase": "Phase projet :",
+          "technicalDiscipline": "Discipline technique :",
+          "subSector": "Sous-secteur :",
+          "language": "Langue :"
+        },
+        "cv": {
+          "openOriginalCv": "Ouvrir le CV Originale"
+        }
+      }
+    }
+  }
+}

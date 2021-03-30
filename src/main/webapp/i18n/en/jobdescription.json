@@ -1,0 +1,35 @@
+{
+  "emobyMphApp": {
+    "jobdescription": {
+      "home": {
+        "title": "Job descriptions",
+        "createLabel": "Create a new Jobdescription",
+        "createOrEditLabel": "Create or edit a Jobdescription",
+        "notFound": "No Jobdescriptions found"
+      },
+      "created": "A new Jobdescription is created with identifier {{ param }}",
+      "updated": "A Jobdescription is updated with identifier {{ param }}",
+      "deleted": "A Jobdescription is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Jobdescription {{ id }}?"
+      },
+      "detail": {
+        "title": "Jobdescription"
+      },
+      "name": "Name",
+      "creation_dt": "Creation Dt",
+      "gender": "Gender",
+      "filename": "Filename",
+      "project": "Project",
+      "nationalities": "Nationalities",
+      "locations": "Locations",
+      "educationlevel": "Educationlevel",
+      "projectphaseActivity": "Projectphase Activity",
+      "technicalDiscipline": "Technical Discipline",
+      "experience": "Experience",
+      "language": "Language",
+      "sector": "Sector",
+      "content": "Content"
+    }
+  }
+}

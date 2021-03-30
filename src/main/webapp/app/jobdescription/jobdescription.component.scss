@@ -1,0 +1,79 @@
+/* jobdescription.component.scss */
+#jd {
+  font-weight: bold;
+}
+
+thead {
+  color: #8ca2db;
+  font-weight: bold;
+}
+tbody {
+  width: 100%;
+}
+tbody tr {
+  background-color: white;
+  width: 100%;
+  height: 45px;
+  position: relative;
+  margin-top: 5px;
+  box-shadow: 0px 4px 8px #aaa;
+  justify-content: space-around;
+}
+
+td {
+  border-top: none;
+  text-align: center;
+}
+
+td a {
+  color: #212529;
+}
+
+.body {
+  width: 100%;
+  height: 100%;
+}
+thead tr {
+  background-color: white;
+  width: 100%;
+  height: 45px;
+  font-size: 16px;
+  justify-content: space-around;
+}
+
+.jd {
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  padding: 5px;
+}
+.prev {
+  color: rgb(142, 163, 219);
+  font-weight: bold;
+  background: none;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgb(142, 163, 219);
+  border-image: initial;
+  border-radius: 3em;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  background-color: whitesmoke;
+}
+
+.lignesEspacees {
+  border-collapse: separate;
+  border-spacing: 0px 5px;
+}
+.paginator {
+  margin-top: 1em;
+  text-align: center;
+  margin-left: -9rem;
+}
+
+a {
+  text-decoration: none;
+}

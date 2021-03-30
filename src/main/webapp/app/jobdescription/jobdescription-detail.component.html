@@ -1,0 +1,43 @@
+<div>
+    <h2 id="page-heading">
+        <span id="jd" jhiTranslate="emobyMphApp.jobdescription-detail.home.title"></span>
+        <jhi-sidebar [visibleSidebar]="visibleSidebar" [projectId]="projectId"></jhi-sidebar>
+    </h2>
+    <hr />
+    <!--  (onChange)="handleChange($event)" -->
+    <p-tabView>
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <span class="header">POTENTIAL CANDIDATE</span>
+                <div class="bullet-container">
+                    <span class="bullet selected">{{potentialcandidate.count()}}</span>
+                </div>
+            </ng-template>
+            <p>Press to <svg width="1.5em" height="1.5em" style="margin-left: 5px; margin-right: 5px;"
+                    viewBox="0 0 16 16" class="bi bi-star" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                </svg>shortlist a candidate
+                <jhi-card [mode]="'potentialcandidate'" #potentialcandidate (successShortlistedEvent)="potentialcandidateTabShortlistedSuccess($event)"></jhi-card>
+            </p>
+        </p-tabPanel>
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <span class="header">SHORTLISTED</span>
+                <div class="bullet-container">
+                    <span class="bullet selected">{{shortlisted.count()}}</span>
+                </div>
+            </ng-template>
+            <jhi-card [mode]="'shortlisted'" #shortlisted (successShortlistedEvent)="shortlistedTabShortlistedSuccess($event)"  (successPlacedEvent)="shortlistedTabPlacedSuccess($event)"></jhi-card>
+        </p-tabPanel>
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <span class="header">PLACED</span>
+                <div class="bullet-container">
+                    <span class="bullet selected">{{placed.count()}}</span>
+                </div>
+            </ng-template>
+            <jhi-card [mode]="'placed'" #placed (successPlacedEvent)="placedTabPlacedSuccess($event)"></jhi-card>
+        </p-tabPanel>
+    </p-tabView>
+</div>

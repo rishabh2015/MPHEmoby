@@ -1,0 +1,360 @@
+@import 'bootstrap-variables';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+
+/* ==============================================================
+Bootstrap tweaks
+===============================================================*/
+html {
+  font-size: 12px;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 10;
+}
+
+h3 {
+  padding-left: 3px;
+  border-left: 5px solid #8ca2db;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+h5 {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+/* Increase contrast of links to get 100% on Lighthouse Accessability Audit. Override this color if you want to change the link color, or use a Bootswatch theme */
+a {
+  color: #533f03;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #533f03;
+}
+
+/* override hover color for dropdown-item forced by bootstrap to all a:not([href]):not([tabindex]) elements in _reboot.scss */
+a:not([href]):not([tabindex]):hover.dropdown-item {
+  color: $dropdown-link-hover-color;
+}
+
+/* override .dropdown-item.active background-color on hover */
+.dropdown-item.active:hover {
+  background-color: mix($dropdown-link-hover-bg, $dropdown-link-active-bg, 50%);
+}
+
+a:hover {
+  /* make sure browsers use the pointer cursor for anchors, even with no href */
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  color: $dropdown-link-hover-color;
+}
+
+/* ==========================================================================
+Browser Upgrade Prompt
+========================================================================== */
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* ==========================================================================
+Generic styles
+========================================================================== */
+
+/* Error highlight on input fields */
+.ng-valid[required],
+.ng-valid.required {
+  border-left: 5px solid green;
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid red;
+}
+
+/* other generic styles */
+
+.jh-card {
+  padding: 1.5%;
+  margin-top: 20px;
+  border: none;
+}
+
+.error {
+  color: white;
+  background-color: red;
+}
+
+.pad {
+  padding: 10px;
+}
+
+.w-40 {
+  width: 40% !important;
+}
+
+.w-60 {
+  width: 60% !important;
+}
+
+.break {
+  white-space: normal;
+  word-break: break-all;
+}
+
+.readonly {
+  background-color: #eee;
+  opacity: 1;
+}
+
+.footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.hand,
+[jhisortby] {
+  cursor: pointer;
+}
+
+/* ==========================================================================
+Custom alerts for notification
+========================================================================== */
+.alerts {
+  .alert {
+    text-overflow: ellipsis;
+    pre {
+      background: none;
+      border: none;
+      font: inherit;
+      color: inherit;
+      padding: 0;
+      margin: 0;
+    }
+    .popover pre {
+      font-size: 10px;
+    }
+  }
+  .jhi-toast {
+    position: fixed;
+    width: 100%;
+    &.left {
+      left: 5px;
+    }
+    &.right {
+      right: 5px;
+    }
+    &.top {
+      top: 55px;
+    }
+    &.bottom {
+      bottom: 55px;
+    }
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .alerts .jhi-toast {
+    width: 50%;
+  }
+}
+
+/* ==========================================================================
+entity detail page css
+========================================================================== */
+.row.jh-entity-details > {
+  dd {
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .row.jh-entity-details > {
+    dt {
+      margin-bottom: 15px;
+    }
+    dd {
+      border-bottom: 1px solid #eee;
+      padding-left: 180px;
+      margin-left: 0;
+    }
+  }
+}
+
+/* ==========================================================================
+ui bootstrap tweaks
+========================================================================== */
+.nav,
+.pagination,
+.carousel,
+.panel-title a {
+  cursor: pointer;
+}
+
+.thread-dump-modal-lock {
+  max-width: 450px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* jhipster-needle-scss-add-main JHipster will add new css style */
+
+.btn-primary {
+  color: #fff;
+  background-color: #8ca2db;
+  border-color: #8ca2db;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #8095cc;
+  border-color: #8095cc;
+}
+
+.dropdown-menu {
+  background-color: #8ca2db;
+  border: none;
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+.dropdown-item {
+  color: #fff;
+}
+
+.dropdown-menu-original {
+  background-color: #fff;
+  border: 1px solid #8ca2db;
+}
+
+.dropdown-item-original {
+  color: #000;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+.dropdown-item-original:hover {
+  color: #666;
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #8ca2db;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+
+hr {
+  width: 8%;
+  height: 5px;
+  background-color: #8ca2db;
+  margin-right: 99%;
+}
+
+.p-tabview .p-tabview-panels {
+  background:none;
+}
+
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #000000;
+  border-bottom: 3px solid #8ca2db;
+}
+
+.p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #000000;
+  font-weight: 400;
+}
+
+.p-tabview .p-tabview-nav li:not(.p-highlight):not(.p-disabled):hover .p-tabview-nav-link {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #000000;
+}
+
+.p-tabview .p-tabview-panels {
+  border: 1px solid #ffffff;
+  padding: 0px;
+}
+
+.p-tabview .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled):focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem #ffffff;
+}
+
+.p-dialog .p-dialog-header {
+  border-bottom: 0px solid #c8c8c8;
+  background: #ffffff;
+  color: #333333;
+  padding: 1rem;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+.p-card .p-card-content {
+  padding: 0rem 0;
+}
+.p-tabview-title {
+  line-height: 1;
+  font-weight: bold;
+}
+
+.p-checkbox-label {
+  margin-top: 4px;
+}
+
+.p-card:hover {
+  cursor: pointer;
+}
+
+.p-dialog-content {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.bullet-container {
+  text-align: center;
+  display: inline-flex;
+
+  .bullet {
+    background-color: #8ca2db;
+    border: 2px solid #8ca2db;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 1em;
+    display: block;
+    height: 2em;
+    width: 2em;
+    &.selected {
+      background-color: #8ca2db;
+    }
+  }
+}

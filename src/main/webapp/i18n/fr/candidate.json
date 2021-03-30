@@ -1,0 +1,44 @@
+{
+  "emobyMphApp": {
+    "candidate": {
+      "home": {
+        "title": "Candidates",
+        "createLabel": "Créer un nouveau Candidate",
+        "createOrEditLabel": "Créer ou éditer un Candidate",
+        "notFound": "Aucun Candidate trouvé"
+      },
+      "created": "Un nouveau Candidate a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Candidate avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Candidate avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Candidate {{ id }} ?"
+      },
+      "detail": {
+        "title": "Candidate"
+      },
+      "gender": "Genre",
+      "last_name": "Nom",
+      "first_name": "Prénom",
+      "date_of_birth": "Date de naissance",
+      "text_clean": "Text Clean",
+      "guid": "Guid",
+      "creation_date": "Creation Date",
+      "update_date": "Update Date",
+      "comment": "Commentaire",
+      "email": "Email",
+      "phone_number": "Numéro Téléphone",
+      "nationality": "Nationnalité",
+      "dualNationality": "Double nationnalité",
+      "location": "Location",
+      "educationlevel": "Niveau éducation",
+      "experience": "Experience",
+      "mobyStatus": "Status Moby",
+      "sectorSubsector": "Secteur et Subsecteur",
+      "projectphaseActivity": "Activité Phase projet",
+      "technicalDiscipline": "Discipline technique",
+      "shortlisted": "Shortlistée",
+      "placed": "Placée",
+      "levelLanguage": "Niveau langue"
+    }
+  }
+}

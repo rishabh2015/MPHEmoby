@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Jobdescription.
+    -->
+    <changeSet id="20200929140257-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="project_id"
+                                 baseTableName="jobdescription"
+                                 constraintName="fk_jobdescription_project_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="project"/>
+
+        <addForeignKeyConstraint baseColumnNames="jobdescription_id"
+                                 baseTableName="jobdescription_nationalities"
+                                 constraintName="fk_jobdescription_nationalities_jobdescription_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jobdescription"/>
+
+        <addForeignKeyConstraint baseColumnNames="nationalities_id"
+                                 baseTableName="jobdescription_nationalities"
+                                 constraintName="fk_jobdescription_nationalities_nationalities_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="country"/>
+        
+        <addForeignKeyConstraint baseColumnNames="jobdescription_id"
+                                 baseTableName="jobdescription_locations"
+                                 constraintName="fk_jobdescription_locations_jobdescription_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jobdescription"/>
+
+        <addForeignKeyConstraint baseColumnNames="locations_id"
+                                 baseTableName="jobdescription_locations"
+                                 constraintName="fk_jobdescription_locations_locations_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="country"/>
+        
+        <addForeignKeyConstraint baseColumnNames="jobdescription_id"
+                                 baseTableName="jobdescription_educationlevel"
+                                 constraintName="fk_jobdescription_educationlevel_jobdescription_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jobdescription"/>
+
+        <addForeignKeyConstraint baseColumnNames="educationlevel_id"
+                                 baseTableName="jobdescription_educationlevel"
+                                 constraintName="fk_jobdescription_educationlevel_educationlevel_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="education_level"/>
+        
+        <addForeignKeyConstraint baseColumnNames="jobdescription_id"
+                                 baseTableName="jobdescription_projectphase_activity"
+                                 constraintName="fk_jobdescription_projectphase_activity_jobdescription_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jobdescription"/>
+
+        <addForeignKeyConstraint baseColumnNames="projectphase_activity_id"
+                                 baseTableName="jobdescription_projectphase_activity"
+                                 constraintName="jobdescription_projectphase_ac_projectphase_activity_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="projectphase_activity"/>
+        
+        <addForeignKeyConstraint baseColumnNames="jobdescription_id"
+                                 baseTableName="jobdescription_technical_discipline"
+                                 constraintName="fk_jobdescription_technical_discipline_jobdescription_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jobdescription"/>
+
+        <addForeignKeyConstraint baseColumnNames="technical_discipline_id"
+                                 baseTableName="jobdescription_technical_discipline"
+                                 constraintName="fk_jobdescription_technical_discipline_technical_discipline_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="technicaldiscipline"/>
+        
+        <addForeignKeyConstraint baseColumnNames="jobdescription_id"
+                                 baseTableName="jobdescription_experience"
+                                 constraintName="fk_jobdescription_experience_jobdescription_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jobdescription"/>
+
+        <addForeignKeyConstraint baseColumnNames="experience_id"
+                                 baseTableName="jobdescription_experience"
+                                 constraintName="fk_jobdescription_experience_experience_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="experience"/>
+        
+        <addForeignKeyConstraint baseColumnNames="jobdescription_id"
+                                 baseTableName="jobdescription_language"
+                                 constraintName="fk_jobdescription_language_jobdescription_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jobdescription"/>
+
+        <addForeignKeyConstraint baseColumnNames="language_id"
+                                 baseTableName="jobdescription_language"
+                                 constraintName="fk_jobdescription_language_language_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="language"/>
+        
+        <addForeignKeyConstraint baseColumnNames="jobdescription_id"
+                                 baseTableName="jobdescription_sector"
+                                 constraintName="fk_jobdescription_sector_jobdescription_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jobdescription"/>
+
+        <addForeignKeyConstraint baseColumnNames="sector_id"
+                                 baseTableName="jobdescription_sector"
+                                 constraintName="fk_jobdescription_sector_sector_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sector"/>
+        
+        <addForeignKeyConstraint baseColumnNames="content_id"
+                                 baseTableName="jobdescription"
+                                 constraintName="fk_jobdescription_content_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="content"/>
+
+    </changeSet>
+</databaseChangeLog>

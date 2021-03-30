@@ -1,0 +1,14 @@
+id;code;libelle
+1;1;Active
+2;922330002;Applied
+3;918360009;Submitted to client
+4;918360008;Shortlisted
+5;918360010;Selected for mob
+6;918360011;Placed
+7;918360000;Blacklisted
+8;922330003;Blacklisted by Client
+9;922330004;Blacklisted by MPH
+10;922330005;Blacklisted in Country
+11;922330000;Shortlisted by Client
+12;922330001;Placed by Client
+13;918360001;Terminated

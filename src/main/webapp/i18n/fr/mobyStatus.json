@@ -1,0 +1,23 @@
+{
+  "emobyMphApp": {
+    "mobyStatus": {
+      "home": {
+        "title": "MobyStatuses",
+        "createLabel": "Créer un nouveau Moby Status",
+        "createOrEditLabel": "Créer ou éditer un Moby Status",
+        "notFound": "Aucun Moby Status trouvé"
+      },
+      "created": "Un nouveau Moby Status a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Moby Status avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Moby Status avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Moby Status {{ id }} ?"
+      },
+      "detail": {
+        "title": "Moby Status"
+      },
+      "code": "Code",
+      "libelle": "Libelle"
+    }
+  }
+}

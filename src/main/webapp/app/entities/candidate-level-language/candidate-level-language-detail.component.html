@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="candidateLevelLanguage">
+            <h2><span jhiTranslate="emobyMphApp.candidateLevelLanguage.detail.title">Candidate Level Language</span> {{ candidateLevelLanguage.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="emobyMphApp.candidateLevelLanguage.levelLanguage">Level Language</span></dt>
+                <dd>
+                    <div *ngIf="candidateLevelLanguage.levelLanguage">
+                        <a [routerLink]="['/level-language', candidateLevelLanguage.levelLanguage, 'view']">{{ candidateLevelLanguage.levelLanguage }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.candidateLevelLanguage.language">Language</span></dt>
+                <dd>
+                    <div *ngIf="candidateLevelLanguage.language">
+                        <a [routerLink]="['/language', candidateLevelLanguage.language, 'view']">{{ candidateLevelLanguage.language }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/candidate-level-language', candidateLevelLanguage.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

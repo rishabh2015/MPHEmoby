@@ -1,0 +1,23 @@
+{
+  "emobyMphApp": {
+    "technicalDiscipline": {
+      "home": {
+        "title": "Technical Disciplines",
+        "createLabel": "Create a new Technical Discipline",
+        "createOrEditLabel": "Create or edit a Technical Discipline",
+        "notFound": "No Technical Disciplines found"
+      },
+      "created": "A new Technical Discipline is created with identifier {{ param }}",
+      "updated": "A Technical Discipline is updated with identifier {{ param }}",
+      "deleted": "A Technical Discipline is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Technical Discipline {{ id }}?"
+      },
+      "detail": {
+        "title": "Technical Discipline"
+      },
+      "code": "Code",
+      "libelle": "Libelle"
+    }
+  }
+}

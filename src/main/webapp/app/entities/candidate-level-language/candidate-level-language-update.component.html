@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-candidate-level-language-heading" jhiTranslate="emobyMphApp.candidateLevelLanguage.home.createOrEditLabel">Create or edit a Candidate Level Language</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="emobyMphApp.candidateLevelLanguage.levelLanguage" for="field_levelLanguage">Level Language</label>
+                    <select class="form-control" id="field_levelLanguage" name="levelLanguage" formControlName="levelLanguage">
+                        <option *ngIf="!editForm.get('levelLanguage')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="levelLanguageOption.id" *ngFor="let levelLanguageOption of levellanguages; trackBy: trackById">{{ levelLanguageOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('levelLanguage')!.invalid && (editForm.get('levelLanguage')!.dirty || editForm.get('levelLanguage')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('levelLanguage')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="emobyMphApp.candidateLevelLanguage.language" for="field_language">Language</label>
+                    <select class="form-control" id="field_language" name="language" formControlName="languageId">
+                        <option *ngIf="!editForm.get('languageId')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="languageOption.id" *ngFor="let languageOption of languages; trackBy: trackById">{{ languageOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('languageId')!.invalid && (editForm.get('languageId')!.dirty || editForm.get('languageId')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('languageId')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

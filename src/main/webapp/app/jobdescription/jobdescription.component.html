@@ -1,0 +1,46 @@
+<div>
+    <h2 id="page-heading">
+        <span id="jd" jhiTranslate="emobyMphApp.jobdescription.home.title"></span>
+        <jhi-sidebar [visibleSidebar]="visibleSidebar" [projectId]="projectId"></jhi-sidebar>
+    </h2>
+    <hr />
+    <table class="lignesEspacees" style="width: 100%;">
+        <thead>
+            <tr>
+                <td scope="col" width="20%" style="text-align:left;"><span class="ml-2">JD name</span></td>
+                <td scope="col" width="10%">Date</td>
+                <td scope="col" width="20%">File</td>
+                <td scope="col">Shortlisted profile</td>
+                <td scope="col">Placed profile</td>
+                <td scope="col"></td>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let jd of jobdescriptions | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalItems }">
+                <td style="text-align:left;"><span class="ml-2"
+                        style="font-weight: bold; color: #212529;"><b><a [routerLink]="['/jobdescription', jd.id]">{{jd.name}}</a></b></span></td>
+                <td>{{jd.creation_dt | date}}</td>
+                <td><a (click)="openFile(jd.contentId)">{{jd.filename}}</a></td>
+                <td>
+                    <div class="bullet-container">
+                        <span class="bullet selected">{{jd.shortListedCount}}</span>
+                    </div>
+                </td>
+                <td>
+                    <div class="bullet-container">
+                        <span class="bullet selected">{{jd.placedCount}}</span>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <button class="prev" (click)="matchingSession(jd.id)">Continue Matching Session</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="paginator">
+        <pagination-controls (pageChange)="page = $event; loadPage(page);"></pagination-controls>
+    </div>
+</div>

@@ -1,0 +1,187 @@
+<div>
+  <div class="row">
+    <div class="col">
+      <h2 id="page-heading">
+        <span jhiTranslate="candidatesearch.title" id="candidatesearch">Candidate Search</span>
+      </h2>
+      <hr />
+    </div>
+    <div class="col">
+      <button (click)="visibleSidebar = true" class="btn vdtbtn float-right" style="margin-top: 1em;">
+        <i class="pi pi-list" style="font-size: 1rem"> </i>
+        <span>
+          Profil selected
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <p-card header="Search parameters" [style]="{'width': '100%', 'margin-bottom': '1.5em','background-color':'#E6E6FA'}">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-4">
+          <div class="form-group">
+            <p-autoComplete name="jobopening" [style]='{"width":"100%", "text-transform:":"capitalize"}'
+              (completeMethod)="filterJobopenings($event.query)" [suggestions]="jobopenings" field="title"
+              [dropdown]="true" placeholder="Choose a job opening" [(ngModel)]="selectedJobopening"
+              [ngModelOptions]="{standalone: true}">
+              <ng-template let-jobopening pTemplate="item">
+                <div>{{jobopening.title | titlecase}}</div>
+              </ng-template>
+            </p-autoComplete>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-group">
+            <p-multiSelect name="sectorsId" [(ngModel)]="selectedSectors" [ngModelOptions]="{standalone: true}"
+              [options]="sectorsAll" placeholder="Sector(s)" optionLabel="libelle" [style]='{"width":"100%"}'
+              [showToggleAll]="false" [filter]="true">
+            </p-multiSelect>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-group">
+            <p-multiSelect name="experiencesId" [options]="experiences" placeholder="Experience" optionLabel="libelle"
+              [showToggleAll]="false" [filter]="true" [style]='{"width":"100%"}' [(ngModel)]="selectedExperiences"
+              [ngModelOptions]="{standalone: true}">
+            </p-multiSelect>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-3">
+          <div class="form-group">
+            <input type="text" name="firstName" formControlName="firstName" class="form-control" id="field_firstName"
+              placeholder="First Name" />
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-group">
+            <input type="text" class="form-control" name="lastName" formControlName="lastName" id="field_lastName"
+              placeholder="Last Name" />
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-group">
+            <p-multiSelect [options]="countries" placeholder="Nationality(ies)" optionLabel="libelle"
+              [showToggleAll]="false" [filter]="true" [style]='{"width":"100%"}' name="nationalitiesId"
+              [(ngModel)]="selectedNationalities" [ngModelOptions]="{standalone: true}">
+            </p-multiSelect>
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-8">
+          <div class="form-group">
+            <input type="text" class="form-control" id="field_firstName" placeholder="Enter some keywords"
+              name="keywords" formControlName="keywords" />
+          </div>
+        </div>
+        <div class="col-2">
+          <button type="submit" id="save-entity" class="btn mybtn float-right"
+            [style]='{"min-width":"75px"}'>SEARCH</button>
+        </div>
+        <div class="col-1"></div>
+      </div>
+    </form>
+  </p-card>
+
+  <!--  <table *ngIf="visibleTable" class="lignesEspacees" style="width: 100%;">
+    <thead>
+      <tr>
+        <td></td>
+        <td scope="col" width="20%"><span class="ml-2">Name</span></td>
+        <td scope="col" width="10%">DOB</td>
+        <td scope="col" width="20%">Email</td>
+        <td scope="col">Phone Number</td>
+        <td scope="col">Nationality</td>
+        <td scope="col">In CRM or not</td>
+        <td scope="col">Matching %</td>
+        <td scope="col">Resume</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let candidate of candidates" ng-click="candidate.selected = !candidate.selected">
+        <td>
+          <input type="checkbox" (click)="addToCart($event)">
+        </td>
+        <td>{{candidate.name}}</td>
+        <td>{{candidate.date_of_birth}}</td>
+        <td>{{candidate.email}}</td>
+        <td>{{candidate.phone_number}}</td>
+        <td>{{candidate.nationality}}</td>
+        <td></td>
+        <td>{{candidate.matching_percent}}</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table> -->
+  <p-table *ngIf="visibleTable" [value]="candidates" [columns]="cols" [(selection)]="selectedRows"
+    [style]='{"width":"100%"}'>
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th
+          style="height: 45px; position: relative; margin-top: 5px; box-shadow: 0px 4px 8px #aaa; justify-content: space-around; background-color: #8ca2db;">
+          <p-checkbox (click)="selectAllRow(e.checked)" #e></p-checkbox>
+        </th>
+        <th *ngFor="let col of columns"
+          style="height: 45px; position: relative; margin-top: 5px; box-shadow: 0px 4px 8px #aaa; justify-content: space-around; text-align: center; background-color: #8ca2db;  color: white;">
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr [pSelectableRow]="rowData">
+        <td
+          style="height: 45px; position: relative; margin-top: 5px; box-shadow: 0px 4px 8px #aaa; justify-content: space-around;">
+          <p-tableCheckbox [value]="rowData" (click)="selectRow(e.value)" #e>
+          </p-tableCheckbox>
+        </td>
+        <td *ngFor="let col of columns"
+          style="height: 45px; position: relative; margin-top: 5px; box-shadow: 0px 4px 8px #aaa; justify-content: space-around; text-align: center;">
+          {{rowData[col.field]}}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-sidebar [(visible)]="visibleSidebar" position="right" [baseZIndex]="10000" [style]="{'width':'430px'}">
+    <h3>Profil selected</h3>
+    <p-table [value]="selectedRows" [columns]="sidebarCols" [(selection)]="selectedRows" [style]='{"marginBottom":"1em", "overflow-y":"auto", "max-height":"600px"}'>
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th width=43px>
+          </th>
+          <th *ngFor="let col of columns">
+            {{col.header}}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr [pSelectableRow]="rowData">
+          <td>
+            <p-tableCheckbox [value]="rowData" (click)="selectRow(e.value)" #e>
+            </p-tableCheckbox>
+          </td>
+          <td *ngFor="let col of columns">
+            {{rowData[col.sidebarField]}}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+    <div align="right">
+      <button class="export" style="cursor: pointer">
+        <span>
+          Export to Excel
+        </span>
+      </button>
+    </div>
+    <div align="right" style="margin-top:20px;">
+     <a (click)="resetAllList()">Reset all list</a>
+    </div>
+  </p-sidebar>
+</div>

@@ -1,0 +1,102 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="jobdescription">
+            <h2><span jhiTranslate="emobyMphApp.jobdescription.detail.title">Jobdescription</span> {{ jobdescription.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="emobyMphApp.jobdescription.name">Name</span></dt>
+                <dd>
+                    <span>{{ jobdescription.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.jobdescription.creation_dt">Creation Dt</span></dt>
+                <dd>
+                    <span>{{ jobdescription.creation_dt }}</span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.jobdescription.gender">Gender</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'emobyMphApp.Gender.' + jobdescription.gender }}">{{ jobdescription.gender }}</span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.jobdescription.filename">Filename</span></dt>
+                <dd>
+                    <span>{{ jobdescription.filename }}</span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.jobdescription.project">Project</span></dt>
+                <dd>
+                    <div *ngIf="jobdescription.projectId">
+                        <a [routerLink]="['/project', jobdescription.projectId, 'view']">{{ jobdescription.projectId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.jobdescription.nationalities">Nationalities</span></dt>
+                <dd>
+                    <span *ngFor="let nationalities of jobdescription.nationalities; let last = last">
+                        <a [routerLink]="['/country', nationalities?.id, 'view']">{{ nationalities.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.jobdescription.locations">Locations</span></dt>
+                <dd>
+                    <span *ngFor="let locations of jobdescription.locations; let last = last">
+                        <a [routerLink]="['/country', locations?.id, 'view']">{{ locations.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.jobdescription.educationlevel">Educationlevel</span></dt>
+                <dd>
+                    <span *ngFor="let educationlevel of jobdescription.educationlevels; let last = last">
+                        <a [routerLink]="['/educationlevel', educationlevel?.id, 'view']">{{ educationlevel.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.jobdescription.projectphaseActivity">Projectphase Activity</span></dt>
+                <dd>
+                    <span *ngFor="let projectphaseActivity of jobdescription.projectphaseActivities; let last = last">
+                        <a [routerLink]="['/projectphase-activity', projectphaseActivity?.id, 'view']">{{ projectphaseActivity.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.jobdescription.technicalDiscipline">Technical Discipline</span></dt>
+                <dd>
+                    <span *ngFor="let technicalDiscipline of jobdescription.technicalDisciplines; let last = last">
+                        <a [routerLink]="['/technical-discipline', technicalDiscipline?.id, 'view']">{{ technicalDiscipline.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.jobdescription.experience">Experience</span></dt>
+                <dd>
+                    <span *ngFor="let experience of jobdescription.experiences; let last = last">
+                        <a [routerLink]="['/experience', experience?.id, 'view']">{{ experience.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.jobdescription.language">Language</span></dt>
+                <dd>
+                    <span *ngFor="let language of jobdescription.languages; let last = last">
+                        <a [routerLink]="['/language', language?.id, 'view']">{{ language.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.jobdescription.sector">Sector</span></dt>
+                <dd>
+                    <span *ngFor="let sector of jobdescription.sectors; let last = last">
+                        <a [routerLink]="['/sector', sector?.id, 'view']">{{ sector.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="emobyMphApp.jobdescription.content">Content</span></dt>
+                <dd>
+                    <div *ngIf="jobdescription?.content?.id">
+                        <a [routerLink]="['/content', jobdescription?.content?.id, 'view']">{{ jobdescription?.content?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/jobdescription', jobdescription.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

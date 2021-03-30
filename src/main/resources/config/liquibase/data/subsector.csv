@@ -1,0 +1,79 @@
+id;code;libelle
+1;101;NPP / Conv Island & BOP
+2;102;NPP / Nucl Island
+3;103;Fuel
+4;104;Waste
+5;105;Defense
+6;106;R&D
+7;107;Safety
+8;1002;Storage
+9;1001;Others
+10;201;Generation / Conventional
+11;202;Generation / Renewable
+12;203;Generation / Hydro
+13;204;T&D
+14;205;Energy Efficiency
+15;206;Battery & Storage
+17;301;Rolling Stocks
+18;302;Signaling
+19;303;Civil Works & Tracks
+20;304;Civil Aircraft
+21;305;Air traffic system
+22;306;Supplies flight avionics
+24;401;Radar System
+25;402;Missile
+26;403;Helicopter
+27;404;Tanker
+28;405;Submarine
+29;406;Military Vessels
+30;407;Fighter jets
+31;408;Satellite Telecom
+32;409;Flight Simulation
+33;410;Weapons manufacturer
+34;411;Combat system
+35;412;Aircraft carrier
+36;413;Identity management business
+37;414;Naval Shipyard
+39;501;Exploration
+40;502;Drilling & Wells
+41;503;Upstream Offshore
+42;504;FPSO
+43;505;FLNG- FSRU
+44;506;SPS (Subsea Production System)
+45;507;UFR (Umbilical Flowline Riser)
+46;508;Upstream Onshore
+47;509;Pipeline & Compressor
+48;510;Refinery
+49;511;Petrochemical
+51;601;Building
+52;602;Airport
+53;603;Train Station
+54;604;Road & Highway
+55;605;Bridge
+56;606;Physical Protection
+57;607;Dam
+58;608;Tunnel & underground facilities
+59;609;Jetty & Port
+60;610;Housing
+62;701;CCTV
+63;702;Mobile Networks
+64;703;Cable Networks
+65;704;Fiber optic
+66;705;Submarine network
+67;706;Satellite
+68;707;Coding
+69;708;Cyber
+70;709;Cloud
+71;710;Data center
+73;801;Life Sciences
+74;802;Sewerage & Water treatment
+75;803;Desalination plant
+76;804;Conventional Waste
+77;805;Cosmetics
+78;806;Food & Beverage
+79;901;Biopharmaceuticals& Pharmaceuticals
+80;902;Medical Devices
+81;903;Diagnostics
+82;904;Agrifood
+83;905;Healthcare Providers & Services
+

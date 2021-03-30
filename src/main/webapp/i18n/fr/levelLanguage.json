@@ -1,0 +1,23 @@
+{
+  "emobyMphApp": {
+    "levelLanguage": {
+      "home": {
+        "title": "LevelLanguages",
+        "createLabel": "Créer un nouveau Level Language",
+        "createOrEditLabel": "Créer ou éditer un Level Language",
+        "notFound": "Aucun Level Language trouvé"
+      },
+      "created": "Un nouveau Level Language a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Level Language avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Level Language avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Level Language {{ id }} ?"
+      },
+      "detail": {
+        "title": "Level Language"
+      },
+      "code": "Code",
+      "libelle": "Libelle"
+    }
+  }
+}

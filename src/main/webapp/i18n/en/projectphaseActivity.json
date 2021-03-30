@@ -1,0 +1,23 @@
+{
+  "emobyMphApp": {
+    "projectphaseActivity": {
+      "home": {
+        "title": "Projectphase Activities",
+        "createLabel": "Create a new Projectphase Activity",
+        "createOrEditLabel": "Create or edit a Projectphase Activity",
+        "notFound": "No Projectphase Activities found"
+      },
+      "created": "A new Projectphase Activity is created with identifier {{ param }}",
+      "updated": "A Projectphase Activity is updated with identifier {{ param }}",
+      "deleted": "A Projectphase Activity is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Projectphase Activity {{ id }}?"
+      },
+      "detail": {
+        "title": "Projectphase Activity"
+      },
+      "projectphase": "Projectphase",
+      "activity": "Activity"
+    }
+  }
+}
